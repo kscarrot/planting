@@ -1,5 +1,7 @@
 # ts-playground
 
+> TypeScript的试验田
+
 ## 项目初始化
 
 ```JavaScript
