@@ -1,0 +1,32 @@
+{
+  "name": "ts-playground",
+  "version": "1.0.0",
+  "description": "typescript prlayground",
+  "main": "index.js",
+  "repository": "https://github.com/kscarrot/ts-playground",
+  "author": "ks",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "rm -rf build && tsc",
+    "commit": "git cz",
+    "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "format": "yarn  prettier --write 'src/**/*.ts' "
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format",
+      "pre-push": "yarn format"
+    }
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2",
+    "husky": "^3.0.4",
+    "prettier": "^1.18.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
