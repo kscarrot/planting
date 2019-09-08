@@ -11,7 +11,8 @@
     "build": "rm -rf build && tsc",
     "commit": "git cz",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "format": "yarn  prettier --write 'src/**/*.ts' "
+    "format": "yarn  prettier --write \"src/**/*.ts\" ",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -20,8 +21,13 @@
     }
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "babel-jest": "^24.9.0",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^3.0.4",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2"
   },
   "config": {
