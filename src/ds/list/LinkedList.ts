@@ -1,4 +1,4 @@
-import { ListADT } from '../interface'
+import { ListADT } from '../ADT'
 
 class Node<T> {
   value: T
@@ -21,7 +21,7 @@ class LinkedList<T> implements ListADT<T> {
     if (this.isEmpty()) {
       throw new Error('List is Empty')
     }
-    if (index >= this.length || index < 0) {
+    if (index > this.length || index < 0) {
       throw new Error('Index out of bounds')
     }
     index = Math.floor(index)
@@ -36,15 +36,31 @@ class LinkedList<T> implements ListADT<T> {
     return this.getNode(index).value
   }
 
+  add(value: T) {
+    const node = new Node(value)
+    if (this.isEmpty()) {
+      this.head = node
+      this.tail = node
+    } else {
+      this.tail.next = node
+      this.tail = node
+    }
+    this.length++
+  }
+
   delete(index: number) {
     const delNode = this.getNode(index)
     if (index === 0) {
       this.head = delNode.next
     }
     if (index === this.length - 1) {
-      const preNode = this.getNode(index - 1)
-      this.tail = preNode
-      this.tail.next = null
+      if (index === 0) {
+        this.tail = null
+      } else {
+        const preNode = this.getNode(index - 1)
+        this.tail = preNode
+        this.tail.next = null
+      }
     }
     if (index !== 0 && index !== this.length - 1) {
       const prevNode = this.getNode(index - 1)
@@ -77,13 +93,15 @@ class LinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  traverse() {
-    let point = this.head
-    while (point) {
-      console.log('print', point.value)
-      point = point.next
+  *traverse() {
+    let current = this.head
+    while (current) {
+      yield current.value
+      current = current.next
     }
   }
+
+  [Symbol.iterator] = this.traverse
 }
 
 export default LinkedList

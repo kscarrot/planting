@@ -12,7 +12,8 @@
     "commit": "git cz",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "format": "yarn  prettier --write \"src/**/*.ts\" ",
-    "test": "jest"
+    "test": "jest",
+    "cov": "rm -rf coverage && jest --coverage"
   },
   "husky": {
     "hooks": {
