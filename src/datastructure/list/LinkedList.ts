@@ -1,4 +1,4 @@
-import { ListADT } from '../ADT'
+import { ListADT } from '@ds/ADT'
 
 class Node<T> {
   value: T
