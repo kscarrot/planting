@@ -1,5 +1,4 @@
 import { ListADT } from '@ds/ADT'
-
 class Node<T> {
   value: T
   next: Node<T> | null = null
@@ -42,10 +41,8 @@ class LinkedList<T> implements ListADT<T> {
       this.head = node
       this.tail = node
     } else {
-      if (this.tail !== null) {
-        this.tail.next = node
-        this.tail = node
-      }
+      ;(this.tail as Node<T>).next = node
+      this.tail = node
     }
     this.length++
   }
