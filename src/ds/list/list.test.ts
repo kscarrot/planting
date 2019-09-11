@@ -1,7 +1,6 @@
 import LinkedList from './LinkedList'
 
-const testInit = List => {
-  const l = new List()
+const testInit = (l: LinkedList<number>) => {
   //test init
   expect(l.length).toBe(0)
   expect(l.head).toBe(null)
@@ -18,8 +17,7 @@ const testInit = List => {
   expect(l.tail).toBe(null)
 }
 
-const testBoundary = List => {
-  const l = new List()
+const testBoundary = (l: LinkedList<number>) => {
   l.insert(0, 2)
   l.insert(0, 1)
   l.insert(2, 3)
@@ -38,9 +36,11 @@ const testBoundary = List => {
 }
 
 test('test linklist init', () => {
-  testInit(LinkedList)
+  const l = new LinkedList<number>()
+  testInit(l)
 })
 
 test('test linkdlist boundary case', () => {
-  testBoundary(LinkedList)
+  const l = new LinkedList<number>()
+  testBoundary(l)
 })

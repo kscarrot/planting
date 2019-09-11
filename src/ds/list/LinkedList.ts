@@ -17,7 +17,7 @@ class LinkedList<T> implements ListADT<T> {
     return this.length === 0
   }
 
-  private getNode(index: number) {
+  getNode(index: number) {
     if (this.isEmpty()) {
       throw new Error('List is Empty')
     }
@@ -42,8 +42,10 @@ class LinkedList<T> implements ListADT<T> {
       this.head = node
       this.tail = node
     } else {
-      this.tail.next = node
-      this.tail = node
+      if (this.tail !== null) {
+        this.tail.next = node
+        this.tail = node
+      }
     }
     this.length++
   }
