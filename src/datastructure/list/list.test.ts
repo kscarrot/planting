@@ -1,6 +1,6 @@
 import { range } from 'lodash'
 import LinkedList from './LinkedList'
-import DoublyLinkedList from './DoublyLinkedLIst'
+import DoublyLinkedList from './DoublyLinkedList'
 
 const testInit = (l: LinkedList<number>) => {
   //test init
