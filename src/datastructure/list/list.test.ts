@@ -1,5 +1,6 @@
 import { range } from 'lodash'
 import LinkedList from './LinkedList'
+import DoublyLinkedList from './DoublyLinkedLIst'
 
 const testInit = (l: LinkedList<number>) => {
   //test init
@@ -47,17 +48,32 @@ const testTraverse = (l: LinkedList<number>) => {
   expect([...l]).toStrictEqual([0, 1, 9, 3, 4])
 }
 
-test('test linklist init', () => {
+test('test LinkedList init', () => {
   const l = new LinkedList<number>()
   testInit(l)
 })
 
-test('test linkdlist boundary case', () => {
+test('test LinkedList boundary case', () => {
   const l = new LinkedList<number>()
   testBoundary(l)
 })
 
-test('test linkdlist traverse', () => {
+test('test LinkedList traverse', () => {
   const l = new LinkedList<number>()
+  testTraverse(l)
+})
+
+test('test DoublyLinkedList init', () => {
+  const l = new DoublyLinkedList<number>()
+  testInit(l)
+})
+
+test('test DoublyLinkedList boundary case', () => {
+  const l = new DoublyLinkedList<number>()
+  testBoundary(l)
+})
+
+test('test DoublyLinkedList traverse', () => {
+  const l = new DoublyLinkedList<number>()
   testTraverse(l)
 })
