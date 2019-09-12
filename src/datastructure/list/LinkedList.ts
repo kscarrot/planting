@@ -1,4 +1,5 @@
 import { ListADT } from '@ds/ADT'
+
 class Node<T> {
   value: T
   next: Node<T> | null = null
@@ -23,7 +24,6 @@ class LinkedList<T> implements ListADT<T> {
     if (index > this.length || index < 0) {
       throw new Error('Index out of bounds')
     }
-    index = Math.floor(index)
     let point = this.head
     for (let i = 0; i < index; i++) {
       point = (point as Node<T>).next
@@ -49,19 +49,16 @@ class LinkedList<T> implements ListADT<T> {
 
   delete(index: number) {
     const delNode = this.getNode(index)
-    if (index === 0) {
+    if (delNode === this.head && delNode === this.tail) {
+      this.head = null
+      this.tail = null
+    } else if (delNode === this.head) {
       this.head = delNode.next
-    }
-    if (index === this.length - 1) {
-      if (index === 0) {
-        this.tail = null
-      } else {
-        const preNode = this.getNode(index - 1)
-        this.tail = preNode
-        this.tail.next = null
-      }
-    }
-    if (index !== 0 && index !== this.length - 1) {
+    } else if (delNode === this.tail) {
+      const preNode = this.getNode(index - 1)
+      this.tail = preNode
+      preNode.next = null
+    } else {
       const prevNode = this.getNode(index - 1)
       prevNode.next = delNode.next
     }
@@ -72,19 +69,13 @@ class LinkedList<T> implements ListADT<T> {
 
   insert(index: number, value: T) {
     const node = new Node(value)
-    if (index === 0) {
+    if (index === this.length) {
+      this.add(value)
+      return
+    } else if (index === 0) {
       node.next = this.head
       this.head = node
-    }
-
-    if (index === this.length) {
-      if (this.tail) {
-        this.tail.next = node
-      }
-      this.tail = node
-    }
-
-    if (index !== 0 && index !== this.length) {
+    } else {
       const prevNode = this.getNode(index - 1)
       node.next = prevNode.next
       prevNode.next = node

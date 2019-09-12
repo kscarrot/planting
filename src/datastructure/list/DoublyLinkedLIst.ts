@@ -25,7 +25,6 @@ class DoublyLinkedList<T> implements ListADT<T> {
     if (index > this.length || index < 0) {
       throw new Error('Index out of bounds')
     }
-    index = Math.floor(index)
     let point = this.head
     for (let i = 0; i < index; i++) {
       point = (point as Node<T>).next
@@ -89,7 +88,6 @@ class DoublyLinkedList<T> implements ListADT<T> {
       const prevNode = nextNode.prev
       ;(prevNode as Node<T>).next = node
       node.prev = prevNode
-
       nextNode.prev = node
       node.next = nextNode
     }
