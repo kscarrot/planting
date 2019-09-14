@@ -8,7 +8,6 @@ test('test Queue ', () => {
   expect(q.length).toBe(1)
   expect(q.dequeue()).toBe(1)
   expect(() => q.dequeue()).toThrow()
-  expect(() => q.end()).toThrow()
   expect(() => q.front()).toThrow()
 
   q.enqueue(9)
@@ -17,7 +16,6 @@ test('test Queue ', () => {
 
   expect([...q]).toStrictEqual([9, 99, 999])
   expect(q.front()).toBe(9)
-  expect(q.end()).toBe(999)
   expect(q.dequeue()).toBe(9)
   expect(q.dequeue()).toBe(99)
   expect(q.dequeue()).toBe(999)
