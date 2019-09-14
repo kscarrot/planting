@@ -38,14 +38,6 @@ class Queue<T> implements QueueADT<T> {
     }
   }
 
-  end() {
-    if (this.l.tail) {
-      return this.l.tail.value
-    } else {
-      throw new Error('Queue is empty')
-    }
-  }
-
   [Symbol.iterator] = this.traverse
 }
 
