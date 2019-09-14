@@ -1,6 +1,6 @@
 import { ListADT } from '@ds/ADT'
 
-class Node<T> {
+export class Node<T> {
   value: T
   next: Node<T> | null = null
   constructor(value: T) {
@@ -26,7 +26,7 @@ class LinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = (point as Node<T>).next
+      point = point!.next
     }
     return point as Node<T>
   }
@@ -41,7 +41,7 @@ class LinkedList<T> implements ListADT<T> {
       this.head = node
       this.tail = node
     } else {
-      ;(this.tail as Node<T>).next = node
+      this.tail!.next = node
       this.tail = node
     }
     this.length++
@@ -49,7 +49,7 @@ class LinkedList<T> implements ListADT<T> {
 
   delete(index: number) {
     const delNode = this.getNode(index)
-    if (delNode === this.head && delNode === this.tail) {
+    if (this.length === 1) {
       this.head = null
       this.tail = null
     } else if (delNode === this.head) {

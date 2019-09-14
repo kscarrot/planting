@@ -1,6 +1,6 @@
 import { ListADT } from '@ds/ADT'
 
-class Node<T> {
+export class Node<T> {
   value: T
   prev: Node<T> | null = null
   next: Node<T> | null = null
@@ -22,12 +22,12 @@ class DoublyLinkedList<T> implements ListADT<T> {
     if (this.isEmpty()) {
       throw new Error('List is Empty')
     }
-    if (index > this.length || index < 0) {
+    if (index >= this.length || index < 0) {
       throw new Error('Index out of bounds')
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = (point as Node<T>).next
+      point = point!.next
     }
     return point as Node<T>
   }
@@ -42,27 +42,33 @@ class DoublyLinkedList<T> implements ListADT<T> {
       this.head = node
       this.tail = node
     } else {
-      ;(this.tail as Node<T>).next = node
+      this.tail!.next = node
       node.prev = this.tail
       this.tail = node
     }
     this.length++
   }
 
-  delete(index: number) {
-    const delNode = this.getNode(index)
+  deleteNode(delNode: Node<T>) {
     if (delNode === this.tail) {
       this.tail = delNode.prev
     } else {
-      ;(delNode.next as Node<T>).prev = delNode.prev
+      delNode.next!.prev = delNode.prev
     }
     if (delNode === this.head) {
       this.head = delNode.next
     } else {
-      ;(delNode.prev as Node<T>).next = delNode.next
+      delNode.prev!.next = delNode.next
     }
     this.length--
     return delNode.value
+  }
+
+  delete(index: number) {
+    if (index === this.length - 1 && !this.isEmpty()) {
+      return this.deleteNode(this.tail as Node<T>)
+    }
+    return this.deleteNode(this.getNode(index))
   }
 
   insert(index: number, value: T) {
@@ -86,7 +92,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     if (index !== 0 && index !== this.length) {
       const nextNode = this.getNode(index)
       const prevNode = nextNode.prev
-      ;(prevNode as Node<T>).next = node
+      prevNode!.next = node
       node.prev = prevNode
       nextNode.prev = node
       node.next = nextNode

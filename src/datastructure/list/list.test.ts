@@ -2,7 +2,9 @@ import { range } from 'lodash'
 import LinkedList from './LinkedList'
 import DoublyLinkedList from './DoublyLinkedList'
 
-const testInit = (l: LinkedList<number>) => {
+type NumberList = LinkedList<number> | DoublyLinkedList<number>
+
+const testInit = (l: NumberList) => {
   //test init
   expect(l.length).toBe(0)
   expect(l.head).toBe(null)
@@ -19,7 +21,7 @@ const testInit = (l: LinkedList<number>) => {
   expect(l.tail).toBe(null)
 }
 
-const testBoundary = (l: LinkedList<number>) => {
+const testBoundary = (l: NumberList) => {
   expect(() => l.getNode(0)).toThrow()
   l.insert(0, 2)
   l.insert(0, 1)
@@ -28,7 +30,6 @@ const testBoundary = (l: LinkedList<number>) => {
   expect(l.getNode(0)).toBe(l.head)
   expect(l.getNode(2)).toBe(l.tail)
   expect(l.length).toBe(3)
-
   //delete head and tail
   l.delete(2)
   l.delete(0)
@@ -39,7 +40,7 @@ const testBoundary = (l: LinkedList<number>) => {
   expect(l.isEmpty()).toBe(true)
 }
 
-const testTraverse = (l: LinkedList<number>) => {
+const testTraverse = (l: NumberList) => {
   const arr = range(5)
   arr.map(e => l.add(e))
   expect([...l]).toStrictEqual(arr)
