@@ -1,5 +1,5 @@
 import { QueueADT } from '@ds/ADT'
-import List from './index'
+import List from '@ds/list/index'
 
 class Queue<T> implements QueueADT<T> {
   private l: List<T>
@@ -13,6 +13,10 @@ class Queue<T> implements QueueADT<T> {
 
   get isEmpty() {
     return this.l.isEmpty
+  }
+
+  private traverse() {
+    return this.l.traverse()
   }
 
   enqueue(value: T) {
@@ -42,7 +46,7 @@ class Queue<T> implements QueueADT<T> {
     }
   }
 
-  [Symbol.iterator] = this.l.traverse
+  [Symbol.iterator] = this.traverse
 }
 
 export default Queue

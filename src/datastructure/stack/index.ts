@@ -1,5 +1,5 @@
 import { StackADT } from '@ds/ADT'
-import List from './index'
+import List from '@ds/list/index'
 
 class Stack<T> implements StackADT<T> {
   private l: List<T>
@@ -13,6 +13,10 @@ class Stack<T> implements StackADT<T> {
 
   get isEmpty() {
     return this.l.isEmpty
+  }
+
+  private traverse() {
+    return this.l.traverse()
   }
 
   push(value: T) {
@@ -35,7 +39,7 @@ class Stack<T> implements StackADT<T> {
     }
   }
 
-  [Symbol.iterator] = this.l.traverse
+  [Symbol.iterator] = this.traverse
 }
 
 export default Stack
