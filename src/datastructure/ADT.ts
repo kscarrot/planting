@@ -21,3 +21,14 @@ export interface QueueADT<T> {
   dequeue(): T
   front(): T
 }
+
+export interface DequeueADT<T> {
+  length: number
+  isEmpty(): boolean
+  push(value: T): void
+  pop(): T
+  unshift(value: T): void
+  shift(): T
+  front(): T
+  end(): T
+}
