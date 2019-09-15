@@ -67,10 +67,10 @@ class CircularLinkedList<T> implements ListADT<T> {
       return
     }
     const node = new Node(value)
-    const prevNode = this.getNode(index - 1)
+    const nextNode = this.getNode(index)
+    const prevNode = nextNode.prev
     prevNode!.next = node
     node.prev = prevNode
-    const nextNode = this.getNode(index)
     nextNode.prev = node
     node.next = nextNode
     this.length++

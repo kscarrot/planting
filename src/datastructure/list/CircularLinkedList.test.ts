@@ -1,4 +1,5 @@
-import CircularLinkedList from './CircularLinkedList'
+import { range } from 'lodash'
+import { CircularLinkedList } from './index'
 
 test('test CircularLinkedList normal index', () => {
   const l = new CircularLinkedList()
@@ -26,4 +27,15 @@ test('test CircularLinkedList out of boudn index', () => {
   expect(l.get(-2)).toBe(2)
   expect(l.get(-5)).toBe(2)
   expect([...l]).toStrictEqual([1, 2, 3])
+})
+
+test('test CircularLinkedList traverse', () => {
+  const l = new CircularLinkedList()
+  const arr = range(5)
+  arr.map(e => l.add(e))
+  expect([...l]).toStrictEqual(arr)
+  l.insert(3, 9)
+  expect([...l]).toStrictEqual([0, 1, 2, 9, 3, 4])
+  l.delete(2)
+  expect([...l]).toStrictEqual([0, 1, 9, 3, 4])
 })
