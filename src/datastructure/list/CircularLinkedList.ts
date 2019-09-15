@@ -1,5 +1,5 @@
 import { ListADT } from '@ds/ADT'
-import { Node } from './DoublyLinkedLIst'
+import { Node } from '@ds/List/DoublyLinkedLIst'
 
 class CircularLinkedList<T> implements ListADT<T> {
   length = 0
@@ -23,7 +23,7 @@ class CircularLinkedList<T> implements ListADT<T> {
         point = point!.prev
       }
     }
-    return point as Node<T>
+    return <Node<T>>point
   }
 
   get(index: number) {

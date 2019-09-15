@@ -1,5 +1,4 @@
 import { ListADT } from '@ds/ADT'
-import { toInteger } from 'lodash'
 
 export class Node<T> {
   value: T
@@ -30,7 +29,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     for (let i = 0; i < index; i++) {
       point = point!.next
     }
-    return point as Node<T>
+    return <Node<T>>point
   }
 
   get(index: number) {
@@ -67,7 +66,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
 
   delete(index: number) {
     if (index === this.length - 1 && !this.isEmpty()) {
-      return this.deleteNode(this.tail as Node<T>)
+      return this.deleteNode(<Node<T>>this.tail)
     }
     return this.deleteNode(this.getNode(index))
   }

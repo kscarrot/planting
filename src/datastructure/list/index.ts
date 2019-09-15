@@ -1,6 +1,6 @@
-import LinkedList from './LinkedList'
-import DoublyLinkedList from './DoublyLinkedList'
-import CircularLinkedList from './CircularLinkedList'
+import LinkedList from '@ds/List/LinkedList'
+import DoublyLinkedList from '@ds/List/DoublyLinkedList'
+import CircularLinkedList from '@ds/List/CircularLinkedList'
 
 export { LinkedList, DoublyLinkedList, CircularLinkedList }
 export default DoublyLinkedList
