@@ -1,5 +1,3 @@
-import Queue from './queue'
-
 export interface ListADT<T> {
   length: number
   isEmpty(): boolean
