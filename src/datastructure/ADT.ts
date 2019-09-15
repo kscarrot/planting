@@ -1,3 +1,5 @@
+import Queue from './queue'
+
 export interface ListADT<T> {
   length: number
   isEmpty(): boolean
@@ -20,4 +22,15 @@ export interface QueueADT<T> {
   enqueue(value: T): void
   dequeue(): T
   front(): T
+}
+
+export interface DequeueADT<T> {
+  length: number
+  isEmpty(): boolean
+  push(value: T): void
+  pop(): T
+  unshift(value: T): void
+  shift(): T
+  front(): T
+  end(): T
 }
