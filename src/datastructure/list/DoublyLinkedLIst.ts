@@ -1,6 +1,7 @@
 import { ListADT } from '@ds/ADT'
+import { toInteger } from 'lodash'
 
-class Node<T> {
+export class Node<T> {
   value: T
   prev: Node<T> | null = null
   next: Node<T> | null = null
