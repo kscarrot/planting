@@ -28,7 +28,7 @@ class LinkedList<T> implements ListADT<T> {
     for (let i = 0; i < index; i++) {
       point = point!.next
     }
-    return point as Node<T>
+    return <Node<T>>point
   }
 
   get(index: number) {

@@ -11,6 +11,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
+    "removeComments": true,
+    "noFallthroughCasesInSwitch": true,
     "lib": ["esnext", "dom"],
     "baseUrl": "src",
     "paths": {

@@ -1,7 +1,7 @@
-import { QueueADT } from '@ds/ADT'
+import { StackADT } from '@ds/ADT'
 import List from '@ds/List'
 
-class Queue<T> implements QueueADT<T> {
+class Stack<T> implements StackADT<T> {
   private l: List<T>
   constructor() {
     this.l = new List<T>()
@@ -19,26 +19,27 @@ class Queue<T> implements QueueADT<T> {
     return this.l.traverse()
   }
 
-  enqueue(value: T) {
+  push(value: T) {
     this.l.add(value)
   }
 
-  dequeue() {
-    if (this.l.isEmpty()) {
-      throw new Error('Queue is empty')
+  pop() {
+    if (this.l.tail) {
+      return this.l.deleteNode(this.l.tail)
+    } else {
+      throw new Error('Stack is empty')
     }
-    return this.l.delete(0)
   }
 
-  front() {
-    if (this.l.head) {
-      return this.l.head.value
+  peek() {
+    if (this.l.tail) {
+      return this.l.tail.value
     } else {
-      throw new Error('Queue is empty')
+      throw new Error('Stack is empty')
     }
   }
 
   [Symbol.iterator] = this.traverse
 }
 
-export default Queue
+export default Stack

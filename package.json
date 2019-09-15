@@ -9,7 +9,9 @@
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "lint-staged",
     "test": "jest",
-    "cov": "rm -rf coverage && jest --coverage"
+    "cov": "rm -rf coverage && jest --coverage",
+    "format": "prettier --write",
+    "tslint": "./node_modules/.bin/tslint -p ./"
   },
   "dependencies": {
     "@types/lodash": "^4.14.138",
@@ -27,6 +29,8 @@
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
+    "tslint": "^5.20.0",
+    "tslint-microsoft-contrib": "^6.2.0",
     "typescript": "^3.6.3"
   },
   "husky": {
