@@ -8,7 +8,7 @@
     "commit": "git cz",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "lint-staged",
-    "test": "jest",
+    "test": "jest --config=jest.config.js",
     "cov": "rm -rf coverage && jest --coverage",
     "format": "prettier --write",
     "tslint": "./node_modules/.bin/tslint -p ./"
@@ -42,7 +42,6 @@
   "lint-staged": {
     "src/**/*.{ts,json,md}": [
       "prettier --write",
-      "yarn tslint",
       "git add"
     ]
   },

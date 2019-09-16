@@ -83,7 +83,7 @@ class LinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  private *traverse() {
+  *traverse() {
     let current = this.head
     while (current) {
       yield current.value

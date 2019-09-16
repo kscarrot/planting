@@ -76,7 +76,7 @@ class CircularLinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  private *traverse() {
+  *traverse() {
     let current = this.head
     let index = 0
     while (current && index < this.length) {

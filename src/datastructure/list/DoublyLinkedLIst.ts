@@ -49,7 +49,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  private deleteNode(delNode: Node<T>) {
+  deleteNode(delNode: Node<T>) {
     if (delNode === this.tail) {
       this.tail = delNode.prev
     } else {
@@ -100,7 +100,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  private *traverse() {
+  *traverse() {
     let current = this.head
     while (current) {
       yield current.value
