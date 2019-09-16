@@ -18,7 +18,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     return this.length === 0
   }
 
-  getNode(index: number) {
+  private getNode(index: number) {
     if (this.isEmpty()) {
       throw new Error('List is Empty')
     }

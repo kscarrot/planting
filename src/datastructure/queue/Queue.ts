@@ -1,5 +1,5 @@
 import { QueueADT } from '@ds/ADT'
-import List from '@ds/List'
+import { DoublyLinkedList as List } from '@ds/list'
 
 class Queue<T> implements QueueADT<T> {
   private l: List<T>
