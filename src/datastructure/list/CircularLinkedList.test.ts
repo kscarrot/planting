@@ -1,5 +1,5 @@
 import { range } from 'lodash'
-import { CircularLinkedList } from '@ds/list'
+import { CircularLinkedList } from '@ds/List'
 
 test('test CircularLinkedList normal index', () => {
   const l = new CircularLinkedList()

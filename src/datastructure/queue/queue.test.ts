@@ -1,4 +1,4 @@
-import { Queue } from '@ds/queue'
+import Queue from '@ds/Queue'
 
 test('test Queue ', () => {
   const q = new Queue()

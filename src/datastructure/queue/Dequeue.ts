@@ -1,5 +1,5 @@
 import { DequeueADT } from '@ds/ADT'
-import { DoublyLinkedList as List } from '@ds/list'
+import List from '@ds/List'
 
 class Dequeue<T> implements DequeueADT<T> {
   private l: List<T>

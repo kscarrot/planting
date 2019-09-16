@@ -1,5 +1,5 @@
 import { StackADT } from '@ds/ADT'
-import { DoublyLinkedList as List } from '@ds/list'
+import List from '@ds/List'
 
 class Stack<T> implements StackADT<T> {
   private l: List<T>

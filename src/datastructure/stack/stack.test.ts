@@ -1,4 +1,4 @@
-import { Stack } from '@ds/stack'
+import Stack from '@ds/Stack'
 test('test Stack ', () => {
   const s = new Stack()
   expect(s.length).toBe(0)
