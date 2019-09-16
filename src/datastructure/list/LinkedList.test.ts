@@ -12,8 +12,6 @@ const testInit = (l: NumberList) => {
   l.insert(0, 1)
   expect(l.length).toBe(1)
   expect(l.get(0)).toBe(1)
-  expect(l.getNode(0)).toBe(l.head)
-  expect(l.getNode(0)).toBe(l.tail)
   l.delete(0)
   expect(l.isEmpty()).toBe(true)
   expect(l.head).toBe(null)
@@ -21,20 +19,15 @@ const testInit = (l: NumberList) => {
 }
 
 const testBoundary = (l: NumberList) => {
-  expect(() => l.getNode(0)).toThrow()
+  expect(() => l.get(0)).toThrow()
   l.insert(0, 2)
   l.insert(0, 1)
   l.insert(2, 3)
   expect(() => l.insert(-1, 2)).toThrow()
-  expect(l.getNode(0)).toBe(l.head)
-  expect(l.getNode(2)).toBe(l.tail)
   expect(l.length).toBe(3)
   //delete head and tail
   l.delete(2)
   l.delete(0)
-  expect(l.getNode(0).value).toBe(2)
-  expect(l.getNode(0)).toBe(l.head)
-  expect(l.getNode(0)).toBe(l.tail)
   l.delete(0)
   expect(l.isEmpty()).toBe(true)
 }

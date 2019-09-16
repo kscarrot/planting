@@ -1,5 +1,5 @@
 import { ListADT } from '@ds/ADT'
-import { Node } from '@ds/List/DoublyLinkedLIst'
+import { Node } from '@ds/list/DoublyLinkedList'
 
 class CircularLinkedList<T> implements ListADT<T> {
   length = 0
@@ -9,7 +9,7 @@ class CircularLinkedList<T> implements ListADT<T> {
     return this.length === 0
   }
 
-  getNode(index: number) {
+  private getNode(index: number) {
     if (this.isEmpty()) {
       throw new Error('List is Empty')
     }
@@ -46,7 +46,7 @@ class CircularLinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  deleteNode(delNode: Node<T>) {
+  private deleteNode(delNode: Node<T>) {
     if (this.length === 1) {
       this.head = null
     } else {
@@ -76,7 +76,7 @@ class CircularLinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  *traverse() {
+  private *traverse() {
     let current = this.head
     let index = 0
     while (current && index < this.length) {
