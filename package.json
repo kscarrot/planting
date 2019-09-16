@@ -30,6 +30,7 @@
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
     "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-microsoft-contrib": "^6.2.0",
     "typescript": "^3.6.3"
   },
@@ -41,6 +42,7 @@
   "lint-staged": {
     "src/**/*.{ts,json,md}": [
       "prettier --write",
+      "yarn tslint",
       "git add"
     ]
   },
