@@ -8,24 +8,26 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: yarn install
+            - dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install node modules
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run: yarn tslint
-      - run: yarn test
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: run tslint
+          command: yarn tslint
+      - run:
+          name: run union test
+          command: yarn test
 
 workflows:
   version: 2
   build-deploy:
     jobs:
-      - build
-      - deploy-job:
-          requires:
-            - build
+      - build:
           filters:
             branches:
               only: master
