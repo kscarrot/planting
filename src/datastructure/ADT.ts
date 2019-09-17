@@ -33,9 +33,9 @@ export interface DequeueADT<T> {
   end(): T
 }
 
-export interface HashTable<T> {
-  length: number
-  get(key: string): T
-  set(key: string, value: T): void
-  delete(key: string): T
+export interface HashTableADT<T> {
+  size: number
+  get(key: any): T | null
+  set(key: any, value: T): void
+  delete(key: string): void
 }
