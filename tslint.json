@@ -2,5 +2,8 @@
   "defaultSeverity": "error",
   "extends": ["tslint-microsoft-contrib/recommended", "tslint-config-prettier"],
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
-  "rules": []
+  "rules": {
+    "no-relative-imports": false,
+    "export-name": false
+  }
 }

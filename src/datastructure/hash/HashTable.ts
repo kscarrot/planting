@@ -10,7 +10,8 @@ class HashTable<T> implements HashTableADT<T> {
   size: number = 0
   private table: List<Map<T>>[]
   constructor(initalCapacity: number) {
-    this.table = new Array(initalCapacity || 64)
+    this.table = []
+    this.table.length = initalCapacity || 64
   }
 
   get capacity() {
