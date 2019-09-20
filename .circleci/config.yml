@@ -22,12 +22,3 @@ jobs:
       - run:
           name: run union test
           command: yarn test
-
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only: master
