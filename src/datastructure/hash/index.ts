@@ -1,3 +1,3 @@
-import HashTable from '@ds/hash/HashTable'
+import HashTable from './HashTable'
 
 export { HashTable }

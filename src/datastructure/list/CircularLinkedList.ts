@@ -1,5 +1,5 @@
-import { ListADT } from '@ds/ADT'
-import { Node } from '@ds/list/DoublyLinkedList'
+import { ListADT } from '../ADT'
+import { Node } from '../list/DoublyLinkedList'
 
 class CircularLinkedList<T> implements ListADT<T> {
   length = 0

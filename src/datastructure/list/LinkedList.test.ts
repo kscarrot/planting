@@ -1,5 +1,5 @@
 import { range } from 'lodash'
-import { LinkedList, DoublyLinkedList } from '@ds/list'
+import { LinkedList, DoublyLinkedList } from '../list'
 
 type NumberList = LinkedList<number> | DoublyLinkedList<number>
 

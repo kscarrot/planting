@@ -1,5 +1,5 @@
-import { HashTableADT } from '@ds/ADT'
-import { DoublyLinkedList as List } from '@ds/list'
+import { HashTableADT } from '../ADT'
+import { DoublyLinkedList as List } from '../list'
 
 type Map<T> = {
   key: any

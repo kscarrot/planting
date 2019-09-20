@@ -1,4 +1,4 @@
-import { ListADT } from '@ds/ADT'
+import { ListADT } from '../ADT'
 
 export class Node<T> {
   value: T

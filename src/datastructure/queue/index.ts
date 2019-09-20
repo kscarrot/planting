@@ -1,4 +1,4 @@
-import Queue from '@ds/queue/Queue'
-import Dequeue from '@ds/queue/Dequeue'
+import Queue from './Queue'
+import Dequeue from './Dequeue'
 
 export { Queue, Dequeue }
