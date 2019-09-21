@@ -59,7 +59,14 @@ class HashTable<T> implements HashTableADT<T> {
     if (node) {
       this.table[i].deleteNode(node)
       this.size--
+      return true
     }
+    return false
+  }
+
+  clear() {
+    this.table = []
+    this.size = 0
   }
 
   private findNode(list: List<Map<T>>, key: any) {

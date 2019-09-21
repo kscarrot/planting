@@ -52,4 +52,6 @@ test('test hash collision', () => {
   ht.set(3, 3)
   ht.delete(3)
   ht.delete(4)
+  ht.clear()
+  expect(ht.size).toBe(0)
 })
