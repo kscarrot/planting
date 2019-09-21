@@ -1,4 +1,4 @@
-import { ListADT } from '@ds/ADT'
+import { ListADT } from '../ADT'
 
 export class Node<T> {
   value: T
@@ -18,7 +18,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     return this.length === 0
   }
 
-  private getNode(index: number) {
+  getNode(index: number) {
     if (this.isEmpty()) {
       throw new Error('List is Empty')
     }

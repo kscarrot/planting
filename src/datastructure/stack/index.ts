@@ -1,4 +1,3 @@
-import Stack from '@ds/stack/Stack'
+import Stack from './Stack'
 
 export { Stack }
-export default Stack

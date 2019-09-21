@@ -12,11 +12,7 @@
     "downlevelIteration": true,
     "removeComments": true,
     "noFallthroughCasesInSwitch": true,
-    "lib": ["esnext", "dom"],
-    "baseUrl": "src",
-    "paths": {
-      "@ds/*": ["datastructure/*"]
-    }
+    "lib": ["esnext", "dom"]
   },
   "include": ["src"]
 }

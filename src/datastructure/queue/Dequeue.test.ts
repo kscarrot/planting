@@ -1,4 +1,4 @@
-import { Dequeue } from '@ds/queue'
+import { Dequeue } from '../queue'
 
 test('test Queue ', () => {
   const q = new Dequeue()

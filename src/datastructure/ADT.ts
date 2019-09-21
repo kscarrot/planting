@@ -32,3 +32,18 @@ export interface DequeueADT<T> {
   front(): T
   end(): T
 }
+
+export interface HashTableADT<T> {
+  size: number
+  get(key: any): T | null
+  set(key: any, value: T): void
+  delete(key: string): boolean
+}
+
+export interface HashSetADT {
+  size: number
+  add(value: any): any
+  delete(value: any): boolean
+  has(value: any): boolean
+  clear(): void
+}
