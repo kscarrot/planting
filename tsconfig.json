@@ -12,8 +12,7 @@
     "downlevelIteration": true,
     "removeComments": true,
     "noFallthroughCasesInSwitch": true,
-    "lib": ["esnext", "dom"],
-    "baseUrl": "src",
+    "lib": ["esnext", "dom"]
   },
   "include": ["src"]
 }
