@@ -38,7 +38,6 @@ export interface HashTableADT<T> {
   get(key: any): T | null
   set(key: any, value: T): void
   delete(key: string): boolean
-  clear(): void
 }
 
 export interface HashSetADT {

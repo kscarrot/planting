@@ -45,7 +45,6 @@ class LinkedList<T> implements ListADT<T> {
       this.tail = node
     }
     this.length++
-    return this
   }
 
   delete(index: number) {
