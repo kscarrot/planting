@@ -9,9 +9,10 @@ const testInit = (l: NumberList) => {
   expect(l.head).toBe(null)
   expect(l.tail).toBe(null)
   //add one element than delete
-  l.insert(0, 1)
-  expect(l.length).toBe(1)
-  expect(l.get(0)).toBe(1)
+  l.add(0).add(1)
+  expect(l.length).toBe(2)
+  expect(l.get(0)).toBe(0)
+  l.delete(0)
   l.delete(0)
   expect(l.isEmpty()).toBe(true)
   expect(l.head).toBe(null)
