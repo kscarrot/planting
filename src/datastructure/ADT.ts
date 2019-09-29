@@ -53,5 +53,4 @@ export interface HeapADT<T> {
   peek(): T | null
   insert(value: T): void
   extract(): T | null
-  delete(key: string): boolean
 }
