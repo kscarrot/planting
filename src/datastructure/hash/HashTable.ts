@@ -9,16 +9,15 @@ type Map<T> = {
 class HashTable<T> implements HashTableADT<T> {
   size: number = 0
   private table: List<Map<T>>[]
-  constructor(initalCapacity: number) {
-    this.table = []
-    this.table.length = initalCapacity || 64
+  constructor(initalCapacity: number = 64) {
+    this.table = new Array(initalCapacity)
   }
 
   get capacity() {
     return this.table.length
   }
 
-  private hash(s: any) {
+  hash(s: any) {
     if (typeof s !== 'string') {
       s = JSON.stringify(s)
     }
@@ -41,34 +40,52 @@ class HashTable<T> implements HashTableADT<T> {
 
   set(key: any, value: T) {
     const i = this.position(key)
-    let list = this.table[i]
-    if (!list) {
-      list = new List()
+    if (!this.table[i]) {
+      this.table[i] = new List()
     }
     const item = { key, value }
     let element = this.find(key)
     if (element) {
-      list.getNode(i).value = item
+      element.value = value
     } else {
-      list.add(item)
+      this.table[i].add(item)
       this.size++
     }
   }
 
   delete(key: any) {
     const i = this.position(key)
-    let element = this.find(key)
-    if (element) {
-      this.table[i].delete(i)
+    const node = this.findNode(this.table[i], key)
+    if (node) {
+      this.table[i].deleteNode(node)
       this.size--
+      return true
+    }
+    return false
+  }
+
+  clear() {
+    this.table = []
+    this.size = 0
+  }
+
+  private findNode(list: List<Map<T>>, key: any) {
+    let node = list && list.head
+    while (node) {
+      if (node.value.key === key) {
+        return node
+      }
+      node = node.next
     }
   }
 
   private find(key: any) {
     const i = this.position(key)
-    for (const iterator of this.table[i]) {
-      if (iterator.key === key) {
-        return iterator
+    if (this.table[i]) {
+      for (const map of this.table[i]) {
+        if (map.key === key) {
+          return map
+        }
       }
     }
     return null

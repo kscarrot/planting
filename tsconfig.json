@@ -13,7 +13,7 @@
     "removeComments": true,
     "noFallthroughCasesInSwitch": true,
     "lib": ["esnext", "dom"],
-    "baseUrl": "src",
+    "baseUrl": "src"
   },
   "include": ["src"]
 }

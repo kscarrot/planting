@@ -4,6 +4,8 @@
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"],
   "rules": {
     "no-relative-imports": false,
-    "export-name": false
+    "export-name": false,
+    "no-backbone-get-set-outside-model": false,
+    "prefer-array-literal": false
   }
 }
