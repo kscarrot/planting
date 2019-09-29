@@ -39,3 +39,10 @@ export interface HashTableADT<T> {
   set(key: any, value: T): void
   delete(key: string): void
 }
+
+export interface HeapADT<T> {
+  size: number
+  peek(): T | null
+  insert(value: T): void
+  extract(): T | null
+}

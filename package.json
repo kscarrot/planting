@@ -10,7 +10,7 @@
     "lint": "lint-staged",
     "test": "./node_modules/.bin/jest --config=jest.config.js",
     "cov": "rm -rf coverage && jest --coverage",
-    "format": "prettier --write",
+    "format": "prettier --write \"src/**/*.ts\"",
     "tslint": "./node_modules/.bin/tslint -p ./"
   },
   "dependencies": {
