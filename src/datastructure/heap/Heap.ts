@@ -97,8 +97,10 @@ class MinHeap<T> implements HeapADT<T> {
     return min
   }
 
-  heapify(array: T[]) {
-    this.heap = array
+  heapify(array?: T[]) {
+    if (array) {
+      this.heap = array
+    }
     for (let i = this.size >> 1; i >= 0; i--) {
       this.shiftDown(i)
     }
@@ -121,6 +123,8 @@ class MaxHeap<T> extends MinHeap<T> {
     super(cmpFn)
     this.cmp.reverse()
   }
+
+  [Symbol.iterator] = super.traverse
 }
 
 export { MinHeap, MaxHeap }

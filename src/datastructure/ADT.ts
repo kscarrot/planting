@@ -56,6 +56,6 @@ export interface HeapADT<T> {
 }
 
 export interface PriorityQueueADT<T> extends QueueADT<T> {
-  priority(value: T): number
+  priority(value: T): number | null
   changePriority(value: T, priority?: number): void
 }
