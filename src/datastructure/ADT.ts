@@ -40,11 +40,11 @@ export interface HashTableADT<T> {
   delete(key: string): void
   clear(): void
 }
-export interface HashSetADT {
+export interface HashSetADT<T> {
   size: number
-  add(value: any): any
-  delete(value: any): boolean
-  has(value: any): boolean
+  add(value: T): void
+  delete(value: T): boolean
+  has(value: T): boolean
   clear(): void
 }
 
@@ -53,4 +53,9 @@ export interface HeapADT<T> {
   peek(): T | null
   insert(value: T): void
   extract(): T | null
+}
+
+export interface PriorityQueueADT<T> extends QueueADT<T> {
+  priority(value: T): number | null
+  changePriority(value: T, priority?: number): void
 }

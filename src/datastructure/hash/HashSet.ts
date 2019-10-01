@@ -1,7 +1,7 @@
 import { HashSetADT } from '../ADT'
 import HashTable from './HashTable'
 
-class HashSet implements HashSetADT {
+class HashSet<T> implements HashSetADT<T> {
   private h: HashTable<boolean>
   constructor() {
     this.h = new HashTable<boolean>()
@@ -11,16 +11,16 @@ class HashSet implements HashSetADT {
     return this.h.size
   }
 
-  add(value: any) {
+  add(value: T) {
     this.h.set(value, true)
     return this
   }
 
-  delete(value: any) {
+  delete(value: T) {
     return this.h.delete(value)
   }
 
-  has(value: any) {
+  has(value: T) {
     return this.h.get(value) === true
   }
 
