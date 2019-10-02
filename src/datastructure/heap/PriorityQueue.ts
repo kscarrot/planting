@@ -23,7 +23,6 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
   }
 
   priority(value: T) {
-    console.log([...this.priorityMap])
     const result = this.priorityMap.get(value)
     return result ? result : null
   }
