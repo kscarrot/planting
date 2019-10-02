@@ -6,6 +6,7 @@
     "no-relative-imports": false,
     "export-name": false,
     "no-backbone-get-set-outside-model": false,
-    "prefer-array-literal": false
+    "prefer-array-literal": false,
+    "insecure-random": false
   }
 }
