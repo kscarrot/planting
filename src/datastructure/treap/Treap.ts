@@ -1,3 +1,4 @@
+import { HeapADT } from '../ADT'
 import comparator, { CompareFunction } from '../../util/comparator'
 
 class TreapNodeBasic<T> {
@@ -18,7 +19,7 @@ class TreapNodeBasic<T> {
 
 type TreapNode<T> = TreapNodeBasic<T> | null
 
-class Treap<T> {
+class Treap<T> implements HeapADT<T> {
   protected cmp: comparator<T>
   root: TreapNode<T> = null
   constructor(cmpFn?: CompareFunction<T>) {
@@ -97,6 +98,16 @@ class Treap<T> {
     const kthToTial = this.split(rootToKth[1], 1)
     this.root = this.merge(rootToKth[0], kthToTial[1])
     return kthToTial[0] ? kthToTial[0].value : null
+  }
+
+  peek() {
+    if (!this.root) return null
+    return this.root.value
+  }
+
+  extract() {
+    if (!this.root) return null
+    return this.delete(this.getRank(this.root, this.root.value))
   }
 
   getPre(value: T) {
