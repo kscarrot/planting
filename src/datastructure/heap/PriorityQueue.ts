@@ -1,5 +1,5 @@
-import { PriorityQueueADT } from '../ADT'
 import { MaxHeap } from './Heap'
+import { PriorityQueueADT } from '../ADT'
 
 class PriorityQueue<T> implements PriorityQueueADT<T> {
   private priorityMap: Map<T, number>
