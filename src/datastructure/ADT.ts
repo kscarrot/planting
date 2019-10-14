@@ -59,3 +59,10 @@ export interface PriorityQueueADT<T> extends QueueADT<T> {
   priority(value: T): number | null
   changePriority(value: T, priority?: number): void
 }
+
+export interface SearchTree<T> {
+  size: number
+  insert(value: T): void
+  delete(value: T): void
+  search(value: T): T | null
+}
