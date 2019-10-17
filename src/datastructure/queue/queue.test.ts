@@ -1,4 +1,4 @@
-import { Queue } from '../queue'
+import { Queue } from '.'
 
 test('test Queue ', () => {
   const q = new Queue()
