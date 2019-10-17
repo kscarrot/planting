@@ -1,5 +1,6 @@
 import { HeapADT } from '../ADT'
 import comparator, { CompareFunction } from '../../util/comparator'
+import Pair from '../../util/Pair'
 
 class TreapNodeBasic<T> {
   value: T
@@ -53,18 +54,19 @@ class Treap<T> implements HeapADT<T> {
   }
 
   split(treap: TreapNode<T>, k: number) {
-    let result: TreapNode<T>[] = [null, null]
+    let result: Pair<TreapNode<T>, TreapNode<T>> = new Pair()
     if (!treap) return result
+    result.first
     if (this.getNodeSize(treap.left) >= k) {
       result = this.split(treap.left, k)
-      treap.left = result[1]
+      treap.left = result.second
       treap.resize()
-      result[1] = treap
+      result.second = treap
     } else {
       result = this.split(treap.right, k - this.getNodeSize(treap.left) - 1)
-      treap.right = result[0]
+      treap.right = result.first
       treap.resize()
-      result[0] = treap
+      result.first = treap
     }
     return result
   }
@@ -79,9 +81,9 @@ class Treap<T> implements HeapADT<T> {
   getKth(treap: TreapNode<T>, k: number) {
     if (!treap) return null
     const sp1 = this.split(treap, k - 1)
-    const sp2 = this.split(sp1[1], 1)
-    const result = sp2[0]
-    this.merge(sp1[0], this.merge(sp2[0], sp2[1]))
+    const sp2 = this.split(sp1.second, 1)
+    const result = sp2.first
+    this.merge(sp1.first, this.merge(sp2.first, sp2.second))
     return result ? result.value : null
   }
 
@@ -89,15 +91,15 @@ class Treap<T> implements HeapADT<T> {
     const k = this.getRank(this.root, value)
     const sp = this.split(this.root, k)
     const node = new TreapNodeBasic(value)
-    this.root = this.merge(this.merge(sp[0], node), sp[1])
+    this.root = this.merge(this.merge(sp.first, node), sp.second)
     return this
   }
 
   delete(k: number) {
     const rootToKth = this.split(this.root, k - 1)
-    const kthToTial = this.split(rootToKth[1], 1)
-    this.root = this.merge(rootToKth[0], kthToTial[1])
-    return kthToTial[0] ? kthToTial[0].value : null
+    const kthToTial = this.split(rootToKth.second, 1)
+    this.root = this.merge(rootToKth.first, kthToTial.second)
+    return kthToTial.first ? kthToTial.first.value : null
   }
 
   peek() {
@@ -119,18 +121,18 @@ class Treap<T> implements HeapADT<T> {
   }
 
   splitV(treap: TreapNode<T>, value: T) {
-    let result: TreapNode<T>[] = [null, null]
+    let result: Pair<TreapNode<T>, TreapNode<T>> = new Pair()
     if (!treap) return result
     if (this.cmp.lt(treap.value, value)) {
       result = this.splitV(treap.right, value)
-      treap.right = result[0]
+      treap.right = result.first
       treap.resize()
-      result[0] = treap
+      result.first = treap
     } else {
       result = this.splitV(treap.left, value)
-      treap.left = result[1]
+      treap.left = result.second
       treap.resize()
-      result[1] = treap
+      result.second = treap
     }
     return result
   }
