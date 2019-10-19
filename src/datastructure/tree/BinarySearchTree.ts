@@ -1,5 +1,5 @@
 import { SearchTree } from '../ADT'
-import comparator, { CompareFunction } from '../../util/comparator'
+import { comparator, CompareFunction } from '../../util'
 
 class TreeNodeBisic<T> {
   value: T
