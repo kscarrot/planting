@@ -1,5 +1,5 @@
 import { HeapADT } from '../ADT'
-import comparator, { CompareFunction } from '../../util/comparator'
+import { comparator, CompareFunction } from '../../util'
 
 class MinHeap<T> implements HeapADT<T> {
   private heap: T[] = []

@@ -64,5 +64,6 @@ export interface SearchTree<T> {
   size: number
   insert(value: T): void
   delete(value: T): void
-  search(value: T): T | null
 }
+
+export interface TreapADT<T> extends SearchTree<T>, HeapADT<T> {}
