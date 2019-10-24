@@ -93,7 +93,7 @@ class Treap<T> implements TreapADT<T> {
   }
 
   insert(value: T) {
-    const k = this.getNodeRank(this.root, value)
+    const k = this.getRank(value)
     const sp = this.split(this.root, k)
     const node = new TreapNodeBasic(value)
     this.root = this.merge(this.merge(sp.first, node), sp.second)

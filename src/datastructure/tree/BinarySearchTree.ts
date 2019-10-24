@@ -73,6 +73,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
   delete(value: T) {
     const node = this.find(value, this.root)
     if (!node) return null
+    const temp = node.value
     if (node.left && node.right) {
       const result = this.findMin(node.right)
       this.delete(result.value)
@@ -81,6 +82,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
       this.replaceNodeInParent(node, node.left || node.right)
       this.size--
     }
+    return temp
   }
 
   search(value: T) {
