@@ -1,26 +1,25 @@
-# ts-playground
+# Planting
 
-> TypeScript的试验田
+> 用 TypeScript 来写数据结构和算法
 
-## 项目初始化
+## Data Structures
 
-```JavaScript
-> git init
-> yarn init
-> tsc init
-> yarn add -D husky
-> yarn add -D prettier
-> commitizen init cz-conventional-changelog --save --save-exact
+- [单向链表](https://github.com/kscarrot/planting/blob/master/src/datastructure/list/LinkedList.ts) [双向链表](https://github.com/kscarrot/planting/blob/master/src/datastructure/list/DoublyLinkedList.ts) [循环链表](https://github.com/kscarrot/planting/blob/master/src/datastructure/list/CircularLinkedList.ts)
+- [栈](https://github.com/kscarrot/planting/blob/master/src/datastructure/stack/Stack.ts) [队列](https://github.com/kscarrot/planting/blob/master/src/datastructure/queue/Queue.ts) [双端队列](https://github.com/kscarrot/planting/blob/master/src/datastructure/queue/Dequeue.ts)
+- [堆](https://github.com/kscarrot/planting/blob/master/src/datastructure/heap/Heap.ts) [优先队列](https://github.com/kscarrot/planting/blob/master/src/datastructure/heap/PriorityQueue.ts)
+- [哈希表](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashTable.ts) [HashSet](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashSet.ts)
+- [二叉排序树](https://github.com/kscarrot/planting/blob/master/src/datastructure/tree/BinarySearchTree.ts)
+- [树堆(无旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/Treap.ts)
+
+## Algorithms
+
+(To Be Continued)
+
+## How to start
+
+```bash
+# 修改代码后编译 然后打断点,F5调试即可
+yarn build
+# 运行测试
+yarn test
 ```
-
-在`package.json`写脚本,添加 `.gitignore`,`.prettierrc`
-
-运行 `yarn log` 初始化 `CHANGELOG.md`
-
-修改 `tsconfig.json` 中的 rootDir / outDir
-
-编写示例代码
-
-编译`cmd+shift+b`或者`yarn build`
-
-打断点 debug 运行
