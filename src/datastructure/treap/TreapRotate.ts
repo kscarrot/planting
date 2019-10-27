@@ -1,5 +1,5 @@
 import { TreapADT } from '../ADT'
-import { comparator, Pair, CompareFunction } from '../../util'
+import { comparator, CompareFunction } from '../../util'
 
 type TreapRotateNode<T> = TreapRotateBasicNode<T> | null
 
@@ -88,7 +88,7 @@ class TreapRotate<T> implements TreapADT<T> {
       }
       const side = node.left === null ? 'right' : 'left'
       const inverseSide = inverse(side)
-      node = node.rotate(side) as TreapRotateBasicNode<T>
+      node = <TreapRotateBasicNode<T>>node.rotate(side)
       //at least one child not null
       node[inverseSide] = this.deleteNode(node[inverseSide], value)
       return node.resize()

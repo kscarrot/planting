@@ -1,7 +1,7 @@
-import Treap from './TreapRotate'
+import { TreapRotate } from './index'
 
 test('test rotate tereap ', () => {
-  const tp = new Treap()
+  const tp = new TreapRotate()
   expect(tp.size).toBe(0)
   tp.insert(3)
   tp.insert(2)
@@ -27,7 +27,7 @@ test('test rotate tereap ', () => {
 })
 
 test('test treap methods', () => {
-  const tp = new Treap()
+  const tp = new TreapRotate()
   expect(tp.isEmpty()).toBe(true)
   expect(tp.extract()).toBe(null)
   expect(tp.peek()).toBe(null)
@@ -38,7 +38,7 @@ test('test treap methods', () => {
 })
 
 test('test treap search', () => {
-  const tp = new Treap()
+  const tp = new TreapRotate()
   tp.insert(3)
   tp.insert(2)
   tp.insert(1)
