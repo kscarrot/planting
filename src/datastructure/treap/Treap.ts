@@ -1,6 +1,22 @@
 import { TreapADT } from '../ADT'
 import { comparator, Pair, CompareFunction } from '../../util'
-import { TreapNode, TreapNodeBasic } from './index'
+class TreapNodeBasic<T> {
+  value: T
+  left: TreapNodeBasic<T> | null = null
+  right: TreapNodeBasic<T> | null = null
+  size: number = 1
+  key: number
+  constructor(value: T) {
+    this.value = value
+    this.key = Math.random()
+  }
+
+  resize() {
+    this.size = 1 + (this.left ? this.left.size : 0) + (this.right ? this.right.size : 0)
+  }
+}
+
+type TreapNode<T> = TreapNodeBasic<T> | null
 class Treap<T> implements TreapADT<T> {
   protected cmp: comparator<T>
   root: TreapNode<T> = null
@@ -129,10 +145,26 @@ class Treap<T> implements TreapADT<T> {
     return this.getKth(this.getRank(value) + 1)
   }
 
-  *traverse() {
+  /**
+   * anothor way to traverse
+   * ```
+  traverse() {
     for (let i = 0; i < this.size; i++) {
       yield this.getKth(i + 1)
     }
+  }
+   * ```
+   */
+
+  *traverse() {
+    function* inorder(root: TreapNode<T>): Generator {
+      if (root) {
+        yield* inorder(root.left)
+        yield root.value
+        yield* inorder(root.right)
+      }
+    }
+    yield* inorder(this.root)
   }
 
   [Symbol.iterator] = this.traverse
