@@ -1,6 +1,6 @@
 import { cmp } from './index'
 
-function InsertionSort<T>(nums: T[]) {
+function insertionSort<T>(nums: T[]) {
   for (let i = 0; i < nums.length; i++) {
     for (let j = i; j > 0; j--) {
       if (cmp.lt(nums[j], nums[j - 1])) {
@@ -11,7 +11,7 @@ function InsertionSort<T>(nums: T[]) {
   return nums
 }
 
-function BinaryInsertionSort<T>(nums: T[]) {
+function binaryInsertionSort<T>(nums: T[]) {
   for (let i = 0; i < nums.length; i++) {
     let [left, right] = [0, i - 1]
     while (left <= right) {
@@ -30,4 +30,4 @@ function BinaryInsertionSort<T>(nums: T[]) {
   return nums
 }
 
-export { InsertionSort, BinaryInsertionSort }
+export { insertionSort, binaryInsertionSort }

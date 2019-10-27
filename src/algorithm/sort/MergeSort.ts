@@ -1,11 +1,11 @@
 import { cmp } from './index'
 
-function MergeSort<T>(nums: T[]): T[] {
+function mergeSort<T>(nums: T[]): T[] {
   if (nums.length <= 1) return nums
   const mid = nums.length >> 1
   const left = nums.slice(0, mid)
   const right = nums.slice(mid)
-  return merge(MergeSort(left), MergeSort(right))
+  return merge(mergeSort(left), mergeSort(right))
 }
 
 function merge<T>(a: T[], b: T[]) {
@@ -17,4 +17,4 @@ function merge<T>(a: T[], b: T[]) {
   return temp.concat(i < a.length ? a.slice(i) : b.slice(j))
 }
 
-export default MergeSort
+export default mergeSort

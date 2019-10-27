@@ -1,5 +1,5 @@
 import { cmp } from './index'
-function BubbleSort<T>(nums: T[]) {
+function bubbleSort<T>(nums: T[]) {
   if (nums.length === 0) {
     return []
   }
@@ -18,4 +18,4 @@ function BubbleSort<T>(nums: T[]) {
   return nums
 }
 
-export default BubbleSort
+export default bubbleSort

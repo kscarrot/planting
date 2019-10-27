@@ -1,16 +1,16 @@
 import { RandomArray } from '../../util'
 import {
-  BubbleSort,
-  CocktailSort,
-  HeapSort,
-  InsertionSort,
-  BinaryInsertionSort,
-  MergeSort,
-  QuickSort,
-  QuickSortES6,
-  QuickSort3While,
-  SelectionSort,
-  ShellSort,
+  bubbleSort,
+  cocktailSort,
+  heapSort,
+  insertionSort,
+  binaryInsertionSort,
+  mergeSort,
+  quickSort,
+  quickSortES6,
+  quickSort3While,
+  selectionSort,
+  shellSort,
 } from './index'
 type sortFn = (arr: number[]) => number[]
 
@@ -28,45 +28,45 @@ const ArraySortCmp = (sortFn: sortFn) => {
 }
 
 test('test BubbleSort ', () => {
-  ArraySortCmp(BubbleSort)
+  ArraySortCmp(bubbleSort)
 })
 
 test('test CocktailSort ', () => {
-  ArraySortCmp(CocktailSort)
+  ArraySortCmp(cocktailSort)
 })
 
 test('test HeapSort ', () => {
-  ArraySortCmp(HeapSort)
+  ArraySortCmp(heapSort)
 })
 
 test('test InsertionSort ', () => {
-  ArraySortCmp(InsertionSort)
+  ArraySortCmp(insertionSort)
 })
 
 test('test BinaryInsertionSort ', () => {
-  ArraySortCmp(BinaryInsertionSort)
+  ArraySortCmp(binaryInsertionSort)
 })
 
 test('test MergeSort ', () => {
-  ArraySortCmp(MergeSort)
+  ArraySortCmp(mergeSort)
 })
 
 test('test SelectionSort ', () => {
-  ArraySortCmp(SelectionSort)
+  ArraySortCmp(selectionSort)
 })
 
 test('test ShellSort ', () => {
-  ArraySortCmp(ShellSort)
+  ArraySortCmp(shellSort)
 })
 
 test('test QuickSort ', () => {
-  ArraySortCmp(QuickSort)
+  ArraySortCmp(quickSort)
 })
 
 test('test QuickSortES6 ', () => {
-  ArraySortCmp(QuickSortES6)
+  ArraySortCmp(quickSortES6)
 })
 
 test('test QuickSort3While ', () => {
-  ArraySortCmp(QuickSort3While)
+  ArraySortCmp(quickSort3While)
 })

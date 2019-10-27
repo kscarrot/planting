@@ -1,6 +1,6 @@
 import { cmp } from './index'
 
-function CocktailSort<T>(nums: T[]) {
+function cocktailSort<T>(nums: T[]) {
   let swapped = true
   let right = nums.length - 1
   let left = 0
@@ -30,4 +30,4 @@ function CocktailSort<T>(nums: T[]) {
   return nums
 }
 
-export default CocktailSort
+export default cocktailSort

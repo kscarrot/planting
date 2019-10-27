@@ -1,24 +1,24 @@
 import { comparator } from '../../util'
-import BubbleSort from './BubbleSort'
-import CocktailSort from './CocktailSort'
-import HeapSort from './HeapSort'
-import { InsertionSort, BinaryInsertionSort } from './InsertionSort'
-import MergeSort from './MergeSort'
-import { QuickSort, QuickSortES6, QuickSort3While } from './QuickSort'
-import SelectionSort from './SelectionSort'
-import ShellSort from './ShellSort'
+import bubbleSort from './bubbleSort'
+import cocktailSort from './cocktailSort'
+import heapSort from './heapSort'
+import { insertionSort, binaryInsertionSort } from './insertionSort'
+import mergeSort from './mergeSort'
+import { quickSort, quickSortES6, quickSort3While } from './quickSort'
+import selectionSort from './selectionSort'
+import shellSort from './shellSort'
 export const cmp = new comparator()
 
 export {
-  BubbleSort,
-  CocktailSort,
-  HeapSort,
-  InsertionSort,
-  BinaryInsertionSort,
-  MergeSort,
-  QuickSort,
-  QuickSortES6,
-  QuickSort3While,
-  SelectionSort,
-  ShellSort,
+  bubbleSort,
+  cocktailSort,
+  heapSort,
+  insertionSort,
+  binaryInsertionSort,
+  mergeSort,
+  quickSort,
+  quickSortES6,
+  quickSort3While,
+  selectionSort,
+  shellSort,
 }

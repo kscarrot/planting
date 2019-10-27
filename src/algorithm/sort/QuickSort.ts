@@ -8,28 +8,28 @@ import { cmp } from './index'
  *  人生苦短,我用.sort()
  */
 
-function QuickSort<T>(arr: T[]): T[] {
+function quickSort<T>(arr: T[]): T[] {
   if (arr.length <= 1) return arr
   const leftarr = []
   const rightarr = []
   for (let i = 1; i < arr.length; i++) {
     cmp.lt(arr[0], arr[i]) ? rightarr.push(arr[i]) : leftarr.push(arr[i])
   }
-  return QuickSort(leftarr)
+  return quickSort(leftarr)
     .concat(arr[0])
-    .concat(QuickSort(rightarr))
+    .concat(quickSort(rightarr))
 }
 
-const QuickSortES6 = <T>(arr: T[]): T[] =>
+const quickSortES6 = <T>(arr: T[]): T[] =>
   arr.length > 1
     ? [
-        ...QuickSortES6(arr.filter(e => cmp.lt(e, arr[0]))),
+        ...quickSortES6(arr.filter(e => cmp.lt(e, arr[0]))),
         ...arr.filter(e => cmp.eq(e, arr[0])),
-        ...QuickSortES6(arr.filter(e => cmp.gt(e, arr[0]))),
+        ...quickSortES6(arr.filter(e => cmp.gt(e, arr[0]))),
       ]
     : arr
 
-function QuickSort3While<T>(arr: T[], left: number = 0, right: number = arr.length - 1) {
+function quickSort3While<T>(arr: T[], left: number = 0, right: number = arr.length - 1) {
   if (arr.length === 0 || left > right) return []
   let lp = left
   let rp = right
@@ -40,9 +40,9 @@ function QuickSort3While<T>(arr: T[], left: number = 0, right: number = arr.leng
     if (lp < rp) [arr[lp], arr[rp]] = [arr[rp], arr[lp]]
   }
   ;[arr[left], arr[lp]] = [arr[lp], arr[left]]
-  QuickSort3While(arr, left, lp - 1)
-  QuickSort3While(arr, lp + 1, right)
+  quickSort3While(arr, left, lp - 1)
+  quickSort3While(arr, lp + 1, right)
   return arr
 }
 
-export { QuickSort, QuickSortES6, QuickSort3While }
+export { quickSort, quickSortES6, quickSort3While }

@@ -1,6 +1,6 @@
 import { cmp } from './index'
 
-function ShellSort<T>(nums: T[]) {
+function shellSort<T>(nums: T[]) {
   for (let gap = nums.length >> 1; gap > 0; gap = gap >> 1) {
     for (let i = gap; i < nums.length; i++) {
       for (let j = i; j > 0; j -= gap) {
@@ -15,4 +15,4 @@ function ShellSort<T>(nums: T[]) {
   return nums
 }
 
-export default ShellSort
+export default shellSort

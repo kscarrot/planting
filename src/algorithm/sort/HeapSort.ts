@@ -1,6 +1,6 @@
 import { cmp } from './index'
 
-function HeapSort<T>(nums: T[]) {
+function heapSort<T>(nums: T[]) {
   // 构建堆
   for (let i = nums.length >> 1; i >= 0; i--) {
     sink(nums, i, nums.length)
@@ -44,4 +44,4 @@ function sink<T>(arr: T[], index: number, range: number) {
   }
 }
 
-export default HeapSort
+export default heapSort
