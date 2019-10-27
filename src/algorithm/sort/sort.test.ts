@@ -10,7 +10,6 @@ import {
   quickSortES6,
   quickSort3While,
   selectionSort,
-  shellSort,
 } from './index'
 type sortFn = (arr: number[]) => number[]
 
@@ -53,10 +52,6 @@ test('test MergeSort ', () => {
 
 test('test SelectionSort ', () => {
   ArraySortCmp(selectionSort)
-})
-
-test('test ShellSort ', () => {
-  ArraySortCmp(shellSort)
 })
 
 test('test QuickSort ', () => {
