@@ -1,5 +1,5 @@
 import { TreapADT } from '../ADT'
-import { comparator, CompareFunction } from '../../util'
+import { Comparator, compareFunction } from '../../util'
 
 type TreapRotateNode<T> = TreapRotateBasicNode<T> | null
 
@@ -46,10 +46,10 @@ class TreapRotateBasicNode<T> {
 }
 
 class TreapRotate<T> implements TreapADT<T> {
-  protected cmp: comparator<T>
+  protected cmp: Comparator<T>
   root: TreapRotateNode<T> = null
-  constructor(cmpFn?: CompareFunction<T>) {
-    this.cmp = new comparator(cmpFn)
+  constructor(cmpFn?: compareFunction<T>) {
+    this.cmp = new Comparator(cmpFn)
   }
   get size() {
     return this.root ? this.root.size : 0

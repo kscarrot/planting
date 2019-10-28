@@ -1,5 +1,5 @@
 import { TreapADT } from '../ADT'
-import { comparator, Pair, CompareFunction } from '../../util'
+import { Comparator, Pair, compareFunction } from '../../util'
 class TreapNodeBasic<T> {
   value: T
   left: TreapNodeBasic<T> | null = null
@@ -18,10 +18,10 @@ class TreapNodeBasic<T> {
 
 type TreapNode<T> = TreapNodeBasic<T> | null
 class Treap<T> implements TreapADT<T> {
-  protected cmp: comparator<T>
+  protected cmp: Comparator<T>
   root: TreapNode<T> = null
-  constructor(cmpFn?: CompareFunction<T>) {
-    this.cmp = new comparator(cmpFn)
+  constructor(cmpFn?: compareFunction<T>) {
+    this.cmp = new Comparator(cmpFn)
   }
 
   get size() {

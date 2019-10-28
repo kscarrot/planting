@@ -1,6 +1,6 @@
 import { TreapRotate } from './index'
 
-test('test rotate tereap ', () => {
+test('test rotate treap ', () => {
   const tp = new TreapRotate()
   expect(tp.size).toBe(0)
   tp.insert(3)
