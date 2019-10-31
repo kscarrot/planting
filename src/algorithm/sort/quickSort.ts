@@ -21,13 +21,13 @@ function quickSort<T>(arr: T[]): T[] {
 }
 
 const quickSortES6 = <T>(arr: T[]): T[] =>
-  arr.length > 1
-    ? [
+  arr.length <= 1
+    ? arr
+    : [
         ...quickSortES6(arr.filter(e => cmp.lt(e, arr[0]))),
         ...arr.filter(e => cmp.eq(e, arr[0])),
         ...quickSortES6(arr.filter(e => cmp.gt(e, arr[0]))),
       ]
-    : arr
 
 function quickSort3While<T>(arr: T[], left: number = 0, right: number = arr.length - 1) {
   if (arr.length === 0 || left > right) return []
