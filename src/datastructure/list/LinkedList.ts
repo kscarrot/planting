@@ -18,7 +18,7 @@ class LinkedList<T> implements ListADT<T> {
   }
 
   private getNode(index: number) {
-    if (this.isEmpty()) {
+    if (this.head === null) {
       throw new Error('List is Empty')
     }
     if (index > this.length || index < 0) {
@@ -26,9 +26,9 @@ class LinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = point!.next
+      point = <Node<T>>point.next
     }
-    return <Node<T>>point
+    return point
   }
 
   get(index: number) {
@@ -37,11 +37,11 @@ class LinkedList<T> implements ListADT<T> {
 
   add(value: T) {
     const node = new Node(value)
-    if (this.isEmpty()) {
+    if (this.tail === null) {
       this.head = node
       this.tail = node
     } else {
-      this.tail!.next = node
+      this.tail.next = node
       this.tail = node
     }
     this.length++
@@ -71,7 +71,7 @@ class LinkedList<T> implements ListADT<T> {
     const node = new Node(value)
     if (index === this.length) {
       this.add(value)
-      return
+      return this
     } else if (index === 0) {
       node.next = this.head
       this.head = node
@@ -81,6 +81,7 @@ class LinkedList<T> implements ListADT<T> {
       prevNode.next = node
     }
     this.length++
+    return this
   }
 
   *traverse() {

@@ -2,8 +2,8 @@ import { ListADT } from '../ADT'
 
 export class Node<T> {
   value: T
-  prev: Node<T> | null = null
-  next: Node<T> | null = null
+  prev: Node<T> | null = null //作为head时为null
+  next: Node<T> | null = null //作为tail时为null
   constructor(value: T) {
     this.value = value
   }
@@ -19,7 +19,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
   }
 
   getNode(index: number) {
-    if (this.isEmpty()) {
+    if (this.head === null) {
       throw new Error('List is Empty')
     }
     if (index >= this.length || index < 0) {
@@ -27,9 +27,9 @@ class DoublyLinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = point!.next
+      point = <Node<T>>point.next
     }
-    return <Node<T>>point
+    return point
   }
 
   get(index: number) {
@@ -38,11 +38,11 @@ class DoublyLinkedList<T> implements ListADT<T> {
 
   add(value: T) {
     const node = new Node(value)
-    if (this.isEmpty()) {
+    if (this.tail === null) {
       this.head = node
       this.tail = node
     } else {
-      this.tail!.next = node
+      this.tail.next = node
       node.prev = this.tail
       this.tail = node
     }
@@ -65,39 +65,29 @@ class DoublyLinkedList<T> implements ListADT<T> {
   }
 
   delete(index: number) {
-    if (index === this.length - 1 && !this.isEmpty()) {
-      return this.deleteNode(<Node<T>>this.tail)
-    }
     return this.deleteNode(this.getNode(index))
   }
 
   insert(index: number, value: T) {
-    const node = new Node(value)
-    if (index === 0) {
-      if (this.head) {
-        this.head.prev = node
-        node.next = this.head
-      }
-      this.head = node
-    }
-
     if (index === this.length) {
-      if (this.tail) {
-        this.tail.next = node
-        node.prev = this.tail
-      }
-      this.tail = node
+      this.add(value)
+      return this
     }
-
-    if (index !== 0 && index !== this.length) {
-      const nextNode = this.getNode(index)
-      const prevNode = nextNode.prev
-      prevNode!.next = node
+    const node = new Node(value)
+    const nextNode = this.getNode(index)
+    const prevNode = nextNode.prev
+    if (prevNode === null) {
+      node.next = nextNode
+      nextNode.prev = node
+      this.head = node
+    } else {
+      prevNode.next = node
       node.prev = prevNode
       nextNode.prev = node
       node.next = nextNode
     }
     this.length++
+    return this
   }
 
   *traverse() {

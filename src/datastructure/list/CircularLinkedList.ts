@@ -1,6 +1,15 @@
 import { ListADT } from '../ADT'
-import { Node } from '../list/DoublyLinkedList'
 
+class Node<T> {
+  value: T
+  prev: Node<T>
+  next: Node<T>
+  constructor(value: T) {
+    this.value = value
+    this.prev = this
+    this.next = this
+  }
+}
 class CircularLinkedList<T> implements ListADT<T> {
   length = 0
   head: null | Node<T> = null
@@ -9,21 +18,25 @@ class CircularLinkedList<T> implements ListADT<T> {
     return this.length === 0
   }
 
+  private isNodeNull(node: Node<T> | null): node is null {
+    return node === null
+  }
+
   private getNode(index: number) {
-    if (this.isEmpty()) {
+    let point = this.head
+    if (this.isNodeNull(point)) {
       throw new Error('List is Empty')
     }
-    let point = this.head
     if (index > 0) {
       for (let i = 0; i < index; i++) {
-        point = point!.next
+        point = point.next
       }
     } else if (index < 0) {
       for (let i = 0; i < -index; i++) {
-        point = point!.prev
+        point = point.prev
       }
     }
-    return <Node<T>>point
+    return point
   }
 
   get(index: number) {
@@ -32,16 +45,14 @@ class CircularLinkedList<T> implements ListADT<T> {
 
   add(value: T) {
     const node = new Node(value)
-    if (this.isEmpty()) {
+    if (this.isNodeNull(this.head)) {
       this.head = node
-      node.next = node
-      node.prev = node
     } else {
-      const tail = this.head!.prev
-      tail!.next = node
+      const tail = this.head.prev
+      tail.next = node
       node.prev = tail
       node.next = this.head
-      this.head!.prev = node
+      this.head.prev = node
     }
     this.length++
   }
@@ -50,8 +61,8 @@ class CircularLinkedList<T> implements ListADT<T> {
     if (this.length === 1) {
       this.head = null
     } else {
-      delNode.next!.prev = delNode.prev
-      delNode.prev!.next = delNode.next
+      delNode.next.prev = delNode.prev
+      delNode.prev.next = delNode.next
     }
     this.length--
     return delNode.value
@@ -64,16 +75,17 @@ class CircularLinkedList<T> implements ListADT<T> {
   insert(index: number, value: T) {
     if (this.isEmpty()) {
       this.add(value)
-      return
+      return this
     }
     const node = new Node(value)
     const nextNode = this.getNode(index)
     const prevNode = nextNode.prev
-    prevNode!.next = node
+    prevNode.next = node
     node.prev = prevNode
     nextNode.prev = node
     node.next = nextNode
     this.length++
+    return this
   }
 
   *traverse() {
