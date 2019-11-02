@@ -9,7 +9,6 @@
 - [堆](https://github.com/kscarrot/planting/blob/master/src/datastructure/heap/Heap.ts) [优先队列](https://github.com/kscarrot/planting/blob/master/src/datastructure/heap/PriorityQueue.ts)
 - [哈希表](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashTable.ts) [HashSet](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashSet.ts)
 - [二叉排序树](https://github.com/kscarrot/planting/blob/master/src/datastructure/tree/BinarySearchTree.ts)
-- [树堆(无旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/Treap.ts)
 - [树堆(无旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/Treap.ts) [树堆(有旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/TreapRotate.ts)
 
 ## Algorithms
