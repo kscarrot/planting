@@ -10,10 +10,17 @@
 - [哈希表](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashTable.ts) [HashSet](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashSet.ts)
 - [二叉排序树](https://github.com/kscarrot/planting/blob/master/src/datastructure/tree/BinarySearchTree.ts)
 - [树堆(无旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/Treap.ts)
+- [树堆(无旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/Treap.ts) [树堆(有旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/TreapRotate.ts)
 
 ## Algorithms
 
-(To Be Continued)
+### 排序
+
+- [冒泡排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/bubbleSort.ts) [鸡尾酒排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/cocktailSort.ts)
+- [选择排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/selectionSort.ts) [堆排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/heapSort.ts)
+- [插入排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/insertionSort.ts)
+- [归并排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/mergeSort.ts)
+- [快速排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/quickSort.ts)
 
 ## How to start
 
