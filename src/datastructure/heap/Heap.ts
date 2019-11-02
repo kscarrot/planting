@@ -1,11 +1,11 @@
 import { HeapADT } from '../ADT'
-import { comparator, CompareFunction } from '../../util'
+import { Comparator, compareFunction } from '../../util'
 
 class MinHeap<T> implements HeapADT<T> {
   private heap: T[] = []
-  protected cmp: comparator<T>
-  constructor(cmpFn?: CompareFunction<T>) {
-    this.cmp = new comparator(cmpFn)
+  protected cmp: Comparator<T>
+  constructor(cmpFn?: compareFunction<T>) {
+    this.cmp = new Comparator(cmpFn)
   }
   get size() {
     return this.heap.length
@@ -119,7 +119,7 @@ class MinHeap<T> implements HeapADT<T> {
 }
 
 class MaxHeap<T> extends MinHeap<T> {
-  constructor(cmpFn?: CompareFunction<T>) {
+  constructor(cmpFn?: compareFunction<T>) {
     super(cmpFn)
     this.cmp.reverse()
   }

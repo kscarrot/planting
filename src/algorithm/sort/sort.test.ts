@@ -1,4 +1,4 @@
-import { RandomArray } from '../../util'
+import { randomArray } from '../../util'
 import {
   bubbleSort,
   cocktailSort,
@@ -20,9 +20,9 @@ const ArraySortCmp = (sortFn: sortFn) => {
   expect(sortFn([2, 1])).toStrictEqual([1, 2])
   expect(sortFn([999, 99, 9])).toStrictEqual([9, 99, 999])
   expect(sortFn([11, 11, 11, 11, 11])).toStrictEqual([11, 11, 11, 11, 11])
-  const arrL10 = RandomArray(10)
+  const arrL10 = randomArray(10)
   expect(sortFn(arrL10)).toStrictEqual(rightAnswer(arrL10))
-  const arrL99 = RandomArray(99)
+  const arrL99 = randomArray(99)
   expect(sortFn(arrL99)).toStrictEqual(rightAnswer(arrL99))
 }
 

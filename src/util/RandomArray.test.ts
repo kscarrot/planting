@@ -1,4 +1,4 @@
-import RandomArray from './RandomArray'
+import RandomArray from './randomArray'
 
 test('should be empty', () => {
   expect(RandomArray(-1)).toStrictEqual([])

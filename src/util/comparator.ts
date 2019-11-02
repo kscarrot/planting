@@ -1,9 +1,9 @@
-export type CompareFunction<T> = {
+export type compareFunction<T> = {
   (a: T, b: T): 0 | 1 | -1
 }
 
 class Comparator<T> {
-  constructor(compareFn?: CompareFunction<T>) {
+  constructor(compareFn?: compareFunction<T>) {
     if (typeof compareFn === 'function') {
       this.compare = compareFn
     }
