@@ -1,13 +1,13 @@
-import RandomArray from './randomArray'
+import randomArray from './randomArray'
 
 test('should be empty', () => {
-  expect(RandomArray(-1)).toStrictEqual([])
+  expect(randomArray(-1)).toStrictEqual([])
 })
 
 test('should be interger', () => {
-  expect(RandomArray(3.5).length).toBe(3)
+  expect(randomArray(3.5).length).toBe(3)
 })
 
 test('normal case', () => {
-  expect(RandomArray(10).length).toBe(10)
+  expect(randomArray(10).length).toBe(10)
 })
