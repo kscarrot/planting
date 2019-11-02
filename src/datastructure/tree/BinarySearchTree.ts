@@ -1,5 +1,5 @@
 import { SearchTree } from '../ADT'
-import { comparator, CompareFunction } from '../../util'
+import { Comparator, compareFunction } from '../../util'
 
 class TreeNodeBisic<T> {
   value: T
@@ -16,10 +16,10 @@ type TreeNode<T> = TreeNodeBisic<T> | null
 
 class BinarySearchTree<T> implements SearchTree<T> {
   private root: TreeNode<T> = null
-  protected cmp: comparator<T>
+  protected cmp: Comparator<T>
   size: number = 0
-  constructor(cmpFn?: CompareFunction<T>) {
-    this.cmp = new comparator(cmpFn)
+  constructor(cmpFn?: compareFunction<T>) {
+    this.cmp = new Comparator(cmpFn)
   }
 
   isEmpty() {

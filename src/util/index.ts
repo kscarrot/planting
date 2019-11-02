@@ -1,5 +1,5 @@
 import { Pair } from './Pair'
-import comparator, { CompareFunction } from './comparator'
-import RandomArray from './RandomArray'
+import Comparator, { compareFunction } from './Comparator'
+import randomArray from './randomArray'
 
-export { comparator, CompareFunction, Pair, RandomArray }
+export { Comparator, compareFunction, Pair, randomArray }
