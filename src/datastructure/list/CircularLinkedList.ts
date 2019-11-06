@@ -55,6 +55,7 @@ class CircularLinkedList<T> implements ListADT<T> {
       this.head.prev = node
     }
     this.length++
+    return this
   }
 
   private deleteNode(delNode: Node<T>) {
