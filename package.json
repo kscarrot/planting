@@ -8,10 +8,11 @@
     "commit": "git cz",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "lint-staged",
-    "test": "./node_modules/.bin/jest",
+    "test": "jest --watch",
+    "testall": "jest",
     "cov": "rm -rf coverage && jest --coverage",
     "format": "prettier --write \"src/**/*.ts\"",
-    "tslint": "./node_modules/.bin/tslint -p ./"
+    "tslint": "tslint -p ./"
   },
   "dependencies": {
     "@types/lodash": "^4.14.138",
@@ -32,7 +33,7 @@
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-microsoft-contrib": "^6.2.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.7.2"
   },
   "husky": {
     "hooks": {
@@ -60,7 +61,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kscarrot/ts-playground"
+    "url": "https://github.com/kscarrot/planting"
   },
   "author": "kscarrot",
   "license": "MIT"

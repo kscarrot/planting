@@ -2,7 +2,7 @@ export type compareFunction<T> = {
   (a: T, b: T): 0 | 1 | -1
 }
 
-class Comparator<T> {
+export class Comparator<T> {
   constructor(compareFn?: compareFunction<T>) {
     if (typeof compareFn === 'function') {
       this.compare = compareFn
@@ -41,5 +41,3 @@ class Comparator<T> {
     this.compare = (a, b) => origintCompareFn(b, a)
   }
 }
-
-export default Comparator
