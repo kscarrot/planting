@@ -9,6 +9,7 @@
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "lint-staged",
     "test": "jest --watch",
+    "testall": "jest",
     "cov": "rm -rf coverage && jest --coverage",
     "format": "prettier --write \"src/**/*.ts\"",
     "tslint": "tslint -p ./"

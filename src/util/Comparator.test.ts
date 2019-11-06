@@ -1,4 +1,4 @@
-import Comparator from './Comparator'
+import { Comparator } from './Comparator'
 
 test('test comparator basic', () => {
   const cmp = new Comparator()
