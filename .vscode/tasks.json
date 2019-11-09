@@ -1,0 +1,19 @@
+{
+  // 有关 tasks.json 格式的文档，请参见
+  // https://go.microsoft.com/fwlink/?LinkId=733558
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "ts-debug-task",
+      "type": "shell",
+      "command": "rm -rf build  && tsc -t \"es5\" --sourceMap --module \"commonjs\"",
+      "group": "build"
+    },
+    {
+      "label": "ts-debug-task-watch",
+      "type": "shell",
+      "command": "rm -rf build  && tsc -t \"es5\" --sourceMap --module \"commonjs\" -w",
+      "group": "build"
+    }
+  ]
+}

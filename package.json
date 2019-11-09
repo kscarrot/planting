@@ -5,6 +5,7 @@
   "private": false,
   "scripts": {
     "build": "rm -rf build && tsc",
+    "watch": "rm -rf build && tsc -w",
     "commit": "git cz",
     "log": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "lint": "lint-staged",
