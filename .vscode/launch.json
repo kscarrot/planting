@@ -11,7 +11,7 @@
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/${relativeFile}",
       //不使用热更新debug需要开启此选项 否则在debug之前需要执行一次 ts-debug-task-watch
-      // "preLaunchTask": "ts-debug-task",
+      "preLaunchTask": "ts-debug-task",
       "outFiles": ["${workspaceFolder}/build/**/*.js"]
     }
   ]
