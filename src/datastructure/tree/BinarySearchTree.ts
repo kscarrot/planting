@@ -1,7 +1,7 @@
 import { SearchTree } from '../ADT'
 import { Comparator, compareFunction } from '../../util'
 
-class TreeNodeBisic<T> {
+export class TreeNodeBisic<T> {
   value: T
   parent: TreeNodeBisic<T> | null = null
   left: TreeNodeBisic<T> | null = null
@@ -12,7 +12,7 @@ class TreeNodeBisic<T> {
   }
 }
 
-type TreeNode<T> = TreeNodeBisic<T> | null
+export type TreeNode<T> = TreeNodeBisic<T> | null
 
 class BinarySearchTree<T> implements SearchTree<T> {
   private root: TreeNode<T> = null
