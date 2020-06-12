@@ -24,18 +24,18 @@
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-typescript": "^7.6.0",
-    "@types/jest": "^24.0.18",
-    "babel-jest": "^24.9.0",
+    "@types/jest": "^26.0.0",
+    "babel-jest": "^26.0.1",
     "cz-conventional-changelog": "^3.0.2",
-    "husky": "^3.0.4",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.2.5",
-    "prettier": "^1.19.1",
-    "ts-jest": "^24.0.2",
-    "tslint": "^5.20.0",
+    "husky": "^4.2.5",
+    "jest": "^26.0.1",
+    "lint-staged": "^10.2.9",
+    "prettier": "^2.0.5",
+    "ts-jest": "^26.1.0",
+    "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
     "tslint-microsoft-contrib": "^6.2.0",
-    "typescript": "^3.7.2"
+    "typescript": "^3.9.5"
   },
   "husky": {
     "hooks": {

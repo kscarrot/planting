@@ -4,14 +4,17 @@
     "module": "esnext",
     "declaration": true,
     "sourceMap": true,
-    "target": "esnext",
+    "target": "ES2019",
     "outDir": "./build",
     "importHelpers": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "removeComments": true,
     "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
     "baseUrl": "src"
   },
   "include": ["src"]
