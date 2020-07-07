@@ -10,6 +10,7 @@
 - [哈希表](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashTable.ts) [HashSet](https://github.com/kscarrot/planting/blob/master/src/datastructure/hash/HashSet.ts)
 - [二叉排序树](https://github.com/kscarrot/planting/blob/master/src/datastructure/tree/BinarySearchTree.ts)
 - [树堆(无旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/Treap.ts) [树堆(有旋)](https://github.com/kscarrot/planting/blob/master/src/datastructure/treap/TreapRotate.ts)
+- [单向图](https://github.com/kscarrot/planting/blob/master/src/datastructure/graph/SingleDirectionGraph.ts)
 
 ## Algorithms
 
@@ -20,6 +21,11 @@
 - [插入排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/insertionSort.ts)
 - [归并排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/mergeSort.ts)
 - [快速排序](https://github.com/kscarrot/planting/blob/master/src/algorithm/sort/quickSort.ts)
+
+### 树搜索
+
+- [深度优先/广度优先](https://github.com/kscarrot/planting/blob/master/src/algorithm/tree/search.ts)
+- [二叉树的遍历](https://github.com/kscarrot/planting/blob/master/src/algorithm/tree/traverse.ts)
 
 ## How to start
 
