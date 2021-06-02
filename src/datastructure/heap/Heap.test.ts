@@ -37,8 +37,9 @@ test('test max heap', () => {
 })
 
 test('test comparetor', () => {
-  const strLengthCompare = (a: string, b: string) => {
-    if (a.length === b.length) return 0
-    return a.length > b.length ? 1 : -1
-  }
+  // TODO: uesless test
+  // const strLengthCompare = (a: string, b: string) => {
+  //   if (a.length === b.length) return 0
+  //   return a.length > b.length ? 1 : -1
+  // }
 })

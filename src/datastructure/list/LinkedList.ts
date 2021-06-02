@@ -26,7 +26,7 @@ class LinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = <Node<T>>point.next
+      point = point.next as Node<T>
     }
     return point
   }
@@ -86,7 +86,7 @@ class LinkedList<T> implements ListADT<T> {
 
   *traverse() {
     let current = this.head
-    while (current) {
+    while (current != null) {
       yield current.value
       current = current.next
     }

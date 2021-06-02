@@ -7,6 +7,7 @@ class MinHeap<T> implements HeapADT<T> {
   constructor(cmpFn?: compareFunction<T>) {
     this.cmp = new Comparator(cmpFn)
   }
+
   get size() {
     return this.heap.length
   }
@@ -44,7 +45,7 @@ class MinHeap<T> implements HeapADT<T> {
   }
 
   private shiftUp(index?: number) {
-    let i = index || this.size - 1
+    let i = index ?? this.size - 1
     while (this.hasParent(i) && this.cmp.gt(this.heap[this.getParentIndex(i)], this.heap[i])) {
       const parentIndex = this.getParentIndex(i)
       this.swap(i, parentIndex)
@@ -89,16 +90,16 @@ class MinHeap<T> implements HeapADT<T> {
       return null
     }
     if (this.size === 1) {
-      return <T>this.heap.pop()
+      return this.heap.pop() as T
     }
     const min = this.heap[0]
-    this.heap[0] = <T>this.heap.pop()
+    this.heap[0] = this.heap.pop() as T
     this.shiftDown()
     return min
   }
 
   heapify(array?: T[]) {
-    if (array) {
+    if (array != null) {
       this.heap = array
     }
     for (let i = this.size >> 1; i >= 0; i--) {

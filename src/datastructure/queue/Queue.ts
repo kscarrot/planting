@@ -2,7 +2,7 @@ import { QueueADT } from '../ADT'
 import { DoublyLinkedList as List } from '../list'
 
 class Queue<T> implements QueueADT<T> {
-  private l: List<T>
+  private readonly l: List<T>
   constructor() {
     this.l = new List<T>()
   }
@@ -31,7 +31,7 @@ class Queue<T> implements QueueADT<T> {
   }
 
   front() {
-    if (this.l.head) {
+    if (this.l.head != null) {
       return this.l.head.value
     } else {
       throw new Error('Queue is empty')

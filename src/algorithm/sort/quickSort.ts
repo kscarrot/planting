@@ -15,18 +15,16 @@ function quickSort<T>(arr: T[]): T[] {
   for (let i = 1; i < arr.length; i++) {
     cmp.lt(arr[0], arr[i]) ? rightarr.push(arr[i]) : leftarr.push(arr[i])
   }
-  return quickSort(leftarr)
-    .concat(arr[0])
-    .concat(quickSort(rightarr))
+  return quickSort(leftarr).concat(arr[0]).concat(quickSort(rightarr))
 }
 
 const quickSortES6 = <T>(arr: T[]): T[] =>
   arr.length <= 1
     ? arr
     : [
-        ...quickSortES6(arr.filter(e => cmp.lt(e, arr[0]))),
-        ...arr.filter(e => cmp.eq(e, arr[0])),
-        ...quickSortES6(arr.filter(e => cmp.gt(e, arr[0]))),
+        ...quickSortES6(arr.filter((e) => cmp.lt(e, arr[0]))),
+        ...arr.filter((e) => cmp.eq(e, arr[0])),
+        ...quickSortES6(arr.filter((e) => cmp.gt(e, arr[0]))),
       ]
 
 function quickSort3While<T>(arr: T[], left: number = 0, right: number = arr.length - 1) {

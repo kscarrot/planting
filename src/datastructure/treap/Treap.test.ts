@@ -11,14 +11,10 @@ test('test treap', () => {
   tp.insert(1)
   expect(tp.peek()).toBe(1)
   expect(tp.extract()).toBe(1)
-  tp.insert(5)
-    .insert(10)
-    .insert(99)
-    .insert(15)
-    .insert(50)
+  tp.insert(5).insert(10).insert(99).insert(15).insert(50)
   expect(tp.size).toBe(5)
 
-  //now [5, 10, 15, 50, 99]
+  // now [5, 10, 15, 50, 99]
   expect(tp.getRank(5)).toBe(1)
   expect(tp.getRank(10)).toBe(2)
   expect(tp.getRank(99)).toBe(5)

@@ -1,0 +1,26 @@
+// {
+//   "root": true,
+//   "parser": "@typescript-eslint/parser",
+//   "plugins": ["@typescript-eslint","prettier"],
+//   "extends": ["standard-with-typescript", "prettier"],
+//   "parserOptions": {
+//     "project": "./tsconfig.json"
+//   },
+//   "rules": {
+//     "prettier/prettier": "error"
+//   }
+// }
+
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": ["standard-with-typescript", "prettier"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  }
+}

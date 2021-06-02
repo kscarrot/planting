@@ -32,7 +32,7 @@ test('test CircularLinkedList out of boudn index', () => {
 test('test CircularLinkedList traverse', () => {
   const l = new CircularLinkedList()
   const arr = range(5)
-  arr.map(e => l.add(e))
+  arr.map((e) => l.add(e))
   expect([...l]).toStrictEqual(arr)
   l.insert(3, 9)
   expect([...l]).toStrictEqual([0, 1, 2, 9, 3, 4])
