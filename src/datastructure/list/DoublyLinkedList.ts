@@ -2,8 +2,8 @@ import { ListADT } from '../ADT'
 
 export class Node<T> {
   value: T
-  prev: Node<T> | null = null //作为head时为null
-  next: Node<T> | null = null //作为tail时为null
+  prev: Node<T> | null = null // 作为head时为null
+  next: Node<T> | null = null // 作为tail时为null
   constructor(value: T) {
     this.value = value
   }
@@ -27,7 +27,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = <Node<T>>point.next
+      point = point.next as Node<T>
     }
     return point
   }
@@ -53,11 +53,13 @@ class DoublyLinkedList<T> implements ListADT<T> {
     if (delNode === this.tail) {
       this.tail = delNode.prev
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       delNode.next!.prev = delNode.prev
     }
     if (delNode === this.head) {
       this.head = delNode.next
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       delNode.prev!.next = delNode.next
     }
     this.length--
@@ -92,7 +94,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
 
   *traverse() {
     let current = this.head
-    while (current) {
+    while (current != null) {
       yield current.value
       current = current.next
     }

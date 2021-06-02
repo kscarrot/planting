@@ -13,13 +13,13 @@ class TreapRotateBasicNode<T> {
   key: number
   constructor(value: T, left?: TreapRotateNode<T>, right?: TreapRotateNode<T>) {
     this.value = value
-    this.left = left || null
-    this.right = right || null
+    this.left = left ?? null
+    this.right = right ?? null
     this.key = Math.random()
   }
 
   resize() {
-    this.size = (this.right ? this.right.size : 0) + (this.left ? this.left.size : 0) + 1
+    this.size = (this.right != null ? this.right.size : 0) + (this.left != null ? this.left.size : 0) + 1
     return this
   }
 
@@ -35,7 +35,7 @@ class TreapRotateBasicNode<T> {
   rotate(side: 'right' | 'left') {
     const temp = this[side]
     const inverseSide = inverse(side)
-    if (temp) {
+    if (temp != null) {
       this[side] = temp[inverseSide]
       temp[inverseSide] = this
       this.resize()
@@ -51,8 +51,9 @@ class TreapRotate<T> implements TreapADT<T> {
   constructor(cmpFn?: compareFunction<T>) {
     this.cmp = new Comparator(cmpFn)
   }
+
   get size() {
-    return this.root ? this.root.size : 0
+    return this.root != null ? this.root.size : 0
   }
 
   isEmpty() {
@@ -66,6 +67,7 @@ class TreapRotate<T> implements TreapADT<T> {
     const side = this.cmp.lt(value, node.value) ? 'left' : 'right'
     node[side] = this.insertNode(node[side], value)
     // Keep it balance
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     if (node[side]!.key < node.key) {
       return node.rotate(side)
     }
@@ -88,8 +90,7 @@ class TreapRotate<T> implements TreapADT<T> {
       }
       const side = node.left === null ? 'right' : 'left'
       const inverseSide = inverse(side)
-      node = <TreapRotateBasicNode<T>>node.rotate(side)
-      //at least one child not null
+      node = node.rotate(side) as TreapRotateBasicNode<T>
       node[inverseSide] = this.deleteNode(node[inverseSide], value)
       return node.resize()
     } else {
@@ -106,7 +107,7 @@ class TreapRotate<T> implements TreapADT<T> {
 
   find(value: T) {
     const result = this.findNode(this.root, value)
-    return result ? result.value : null
+    return result != null ? result.value : null
   }
 
   delete(value: T) {
@@ -115,13 +116,13 @@ class TreapRotate<T> implements TreapADT<T> {
   }
 
   peek() {
-    if (!this.root) return null
+    if (this.root == null) return null
     return this.root.value
   }
 
   extract() {
     const value = this.peek()
-    if (value) {
+    if (value != null) {
       return this.delete(value)
     }
     return null
@@ -129,7 +130,7 @@ class TreapRotate<T> implements TreapADT<T> {
 
   *traverse() {
     function* inorder(root: TreapRotateNode<T>): Generator {
-      if (root) {
+      if (root != null) {
         yield* inorder(root.left)
         yield root.value
         yield* inorder(root.right)

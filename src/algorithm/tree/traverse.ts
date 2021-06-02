@@ -8,7 +8,7 @@ export enum TraverseType {
 
 function* traverse(root: TreeNode<number>, type: TraverseType) {
   function* order(root: TreeNode<number>): Generator<number> {
-    if (root) {
+    if (root != null) {
       if (type === TraverseType.preorder) yield root.value
       yield* order(root.left)
       if (type === TraverseType.inorder) yield root.value

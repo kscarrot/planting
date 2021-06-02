@@ -2,7 +2,7 @@ import { HashSetADT } from '../ADT'
 import HashTable from './HashTable'
 
 class HashSet<T> implements HashSetADT<T> {
-  private h: HashTable<boolean>
+  private readonly h: HashTable<boolean>
   constructor() {
     this.h = new HashTable<boolean>()
   }

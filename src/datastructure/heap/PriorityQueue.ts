@@ -2,13 +2,13 @@ import { MaxHeap } from './Heap'
 import { PriorityQueueADT } from '../ADT'
 
 class PriorityQueue<T> implements PriorityQueueADT<T> {
-  private priorityMap: Map<T, number>
-  private heap: MaxHeap<T>
+  private readonly priorityMap: Map<T, number>
+  private readonly heap: MaxHeap<T>
   constructor() {
     this.priorityMap = new Map()
     const comparePriority = (a: T, b: T) => {
-      const ap = <number>this.priorityMap.get(a)
-      const bp = <number>this.priorityMap.get(b)
+      const ap = this.priorityMap.get(a) as number
+      const bp = this.priorityMap.get(b) as number
       return ap < bp ? -1 : 1
     }
     this.heap = new MaxHeap(comparePriority)
@@ -24,7 +24,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
 
   priority(value: T) {
     const result = this.priorityMap.get(value)
-    return result ? result : null
+    return result ?? null
   }
 
   changePriority(value: T, priority: number) {
@@ -42,7 +42,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
 
   dequeue() {
     const top = this.heap.extract()
-    if (top) {
+    if (top != null) {
       this.priorityMap.delete(top)
     } else {
       throw new Error('queue is empty')
@@ -52,7 +52,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
 
   front() {
     const top = this.heap.peek()
-    if (top) {
+    if (top != null) {
       return top
     } else {
       throw new Error('queue is empty')

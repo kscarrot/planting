@@ -12,7 +12,8 @@
     "test": "jest --watch",
     "testall": "jest",
     "cov": "rm -rf coverage && jest --coverage",
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"",
+    "eslint": "eslint . --ext .ts"
   },
   "dependencies": {
     "@types/lodash": "^4.14.138",

@@ -4,11 +4,11 @@ import { LinkedList, DoublyLinkedList } from '../list'
 type NumberList = LinkedList<number> | DoublyLinkedList<number>
 
 const testInit = (l: NumberList) => {
-  //test init
+  // test init
   expect(l.length).toBe(0)
   expect(l.head).toBe(null)
   expect(l.tail).toBe(null)
-  //add one element than delete
+  // add one element than delete
   l.insert(0, 1)
   expect(l.length).toBe(1)
   expect(l.get(0)).toBe(1)
@@ -25,7 +25,7 @@ const testBoundary = (l: NumberList) => {
   l.insert(2, 3)
   expect(() => l.insert(-1, 2)).toThrow()
   expect(l.length).toBe(3)
-  //delete head and tail
+  // delete head and tail
   l.delete(2)
   l.delete(0)
   l.delete(0)
@@ -34,7 +34,7 @@ const testBoundary = (l: NumberList) => {
 
 const testTraverse = (l: NumberList) => {
   const arr = range(5)
-  arr.map(e => l.add(e))
+  arr.map((e) => l.add(e))
   expect([...l]).toStrictEqual(arr)
   l.insert(3, 9)
   l.delete(2)

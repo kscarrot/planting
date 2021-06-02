@@ -1,14 +1,14 @@
 import { HashTableADT } from '../ADT'
 import { DoublyLinkedList as List } from '../list'
 
-type Map<T> = {
+interface Map<T> {
   key: any
   value: T
 }
 
 class HashTable<T> implements HashTableADT<T> {
   size: number = 0
-  private table: List<Map<T>>[]
+  private table: Array<List<Map<T>>>
   constructor(initalCapacity: number = 64) {
     this.table = new Array(initalCapacity)
   }
@@ -23,6 +23,7 @@ class HashTable<T> implements HashTableADT<T> {
     }
     let hash = 0
     for (let i = 0; i < s.length; i++) {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       hash = (hash << 5) - hash + s.charCodeAt(i)
       hash &= hash
     }
@@ -35,17 +36,18 @@ class HashTable<T> implements HashTableADT<T> {
 
   get(key: any) {
     const element = this.find(key)
-    return element ? element.value : null
+    return element != null ? element.value : null
   }
 
   set(key: any, value: T) {
     const i = this.position(key)
+    // eslint-disable-next-line
     if (!this.table[i]) {
       this.table[i] = new List()
     }
     const item = { key, value }
-    let element = this.find(key)
-    if (element) {
+    const element = this.find(key)
+    if (element != null) {
       element.value = value
     } else {
       this.table[i].add(item)
@@ -56,7 +58,7 @@ class HashTable<T> implements HashTableADT<T> {
   delete(key: any) {
     const i = this.position(key)
     const node = this.findNode(this.table[i], key)
-    if (node) {
+    if (node != null) {
       this.table[i].deleteNode(node)
       this.size--
       return true
@@ -70,8 +72,9 @@ class HashTable<T> implements HashTableADT<T> {
   }
 
   private findNode(list: List<Map<T>>, key: any) {
+    // eslint-disable-next-line
     let node = list && list.head
-    while (node) {
+    while (node != null) {
       if (node.value.key === key) {
         return node
       }
@@ -81,6 +84,7 @@ class HashTable<T> implements HashTableADT<T> {
 
   private find(key: any) {
     const i = this.position(key)
+    // eslint-disable-next-line
     if (this.table[i]) {
       for (const map of this.table[i]) {
         if (map.key === key) {

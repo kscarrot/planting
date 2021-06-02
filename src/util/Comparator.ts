@@ -1,6 +1,4 @@
-export type compareFunction<T> = {
-  (a: T, b: T): 0 | 1 | -1
-}
+export type compareFunction<T> = (a: T, b: T) => 0 | 1 | -1
 
 export class Comparator<T> {
   constructor(compareFn?: compareFunction<T>) {

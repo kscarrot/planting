@@ -17,8 +17,8 @@ jobs:
             - node_modules
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
-          name: run tslint
-          command: yarn tslint
+          name: run lint
+          command: yarn eslint
       - run:
-          name: run union test
+          name: run uint test
           command: yarn testall

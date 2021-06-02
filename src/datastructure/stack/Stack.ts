@@ -2,7 +2,7 @@ import { StackADT } from '../ADT'
 import { DoublyLinkedList as List } from '../list'
 
 class Stack<T> implements StackADT<T> {
-  private l: List<T>
+  private readonly l: List<T>
   constructor() {
     this.l = new List<T>()
   }
@@ -24,7 +24,7 @@ class Stack<T> implements StackADT<T> {
   }
 
   pop() {
-    if (this.l.tail) {
+    if (this.l.tail != null) {
       return this.l.deleteNode(this.l.tail)
     } else {
       throw new Error('Stack is empty')
@@ -32,7 +32,7 @@ class Stack<T> implements StackADT<T> {
   }
 
   peek() {
-    if (this.l.tail) {
+    if (this.l.tail != null) {
       return this.l.tail.value
     } else {
       throw new Error('Stack is empty')

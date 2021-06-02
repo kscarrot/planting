@@ -12,7 +12,7 @@ class TreapNodeBasic<T> {
   }
 
   resize() {
-    this.size = 1 + (this.left ? this.left.size : 0) + (this.right ? this.right.size : 0)
+    this.size = 1 + (this.left != null ? this.left.size : 0) + (this.right != null ? this.right.size : 0)
   }
 }
 
@@ -25,7 +25,7 @@ class Treap<T> implements TreapADT<T> {
   }
 
   get size() {
-    return this.root ? this.root.size : 0
+    return this.root != null ? this.root.size : 0
   }
 
   isEmpty() {
@@ -33,12 +33,12 @@ class Treap<T> implements TreapADT<T> {
   }
 
   private getNodeSize(treap: TreapNode<T>) {
-    return treap ? treap.size : 0
+    return treap != null ? treap.size : 0
   }
 
   merge(treapA: TreapNode<T>, treapB: TreapNode<T>) {
-    if (!treapA) return treapB
-    if (!treapB) return treapA
+    if (treapA == null) return treapB
+    if (treapB == null) return treapA
     if (treapA.key < treapB.key) {
       treapA.right = this.merge(treapA.right, treapB)
       treapA.resize()
@@ -52,7 +52,7 @@ class Treap<T> implements TreapADT<T> {
 
   split(treap: TreapNode<T>, k: number) {
     let result: Pair<TreapNode<T>, TreapNode<T>> = new Pair()
-    if (!treap) return result
+    if (treap == null) return result
     if (this.getNodeSize(treap.left) < k) {
       result = this.split(treap.right, k - this.getNodeSize(treap.left) - 1)
       treap.right = result.first
@@ -69,7 +69,7 @@ class Treap<T> implements TreapADT<T> {
 
   splitV(treap: TreapNode<T>, value: T) {
     let result: Pair<TreapNode<T>, TreapNode<T>> = new Pair()
-    if (!treap) return result
+    if (treap == null) return result
     if (this.cmp.lt(treap.value, value)) {
       result = this.splitV(treap.right, value)
       treap.right = result.first
@@ -85,7 +85,7 @@ class Treap<T> implements TreapADT<T> {
   }
 
   getNodeRank(treap: TreapNode<T>, value: T): number {
-    if (!treap) return 0
+    if (treap == null) return 0
     return this.cmp.lt(value, treap.value)
       ? this.getNodeRank(treap.left, value)
       : this.getNodeRank(treap.right, value) + this.getNodeSize(treap.left) + 1
@@ -96,12 +96,12 @@ class Treap<T> implements TreapADT<T> {
   }
 
   getNodeKth(treap: TreapNode<T>, k: number) {
-    if (!treap) return null
+    if (treap == null) return null
     const sp1 = this.split(treap, k - 1)
     const sp2 = this.split(sp1.second, 1)
     const result = sp2.first
     this.merge(sp1.first, this.merge(sp2.first, sp2.second))
-    return result ? result.value : null
+    return result != null ? result.value : null
   }
 
   getKth(index: number) {
@@ -124,16 +124,16 @@ class Treap<T> implements TreapADT<T> {
     const firstToKth = this.split(this.root, k - 1)
     const kthToLast = this.split(firstToKth.second, 1)
     this.root = this.merge(firstToKth.first, kthToLast.second)
-    return kthToLast.first ? kthToLast.first.value : null
+    return kthToLast.first != null ? kthToLast.first.value : null
   }
 
   peek() {
-    if (!this.root) return null
+    if (this.root == null) return null
     return this.root.value
   }
 
   extract() {
-    if (!this.root) return null
+    if (this.root == null) return null
     return this.deleteKth(this.getRank(this.root.value))
   }
 
@@ -158,7 +158,7 @@ class Treap<T> implements TreapADT<T> {
 
   *traverse() {
     function* inorder(root: TreapNode<T>): Generator {
-      if (root) {
+      if (root != null) {
         yield* inorder(root.left)
         yield root.value
         yield* inorder(root.right)

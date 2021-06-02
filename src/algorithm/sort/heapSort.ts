@@ -23,10 +23,10 @@ function heapSort<T>(nums: T[]) {
  *
  */
 function sink<T>(arr: T[], index: number, range: number) {
-  let p = index * 2 + 1
   /**
    * @description while 写法
    ```
+  let p = index * 2 + 1
   while (p < range) {
     if (p + 1 < range && cmp.lt(arr[p], arr[p + 1])) p++
     if (cmp.lt(arr[p], arr[index])) break
