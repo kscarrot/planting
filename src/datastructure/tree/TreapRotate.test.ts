@@ -1,4 +1,4 @@
-import { TreapRotate } from './index'
+import TreapRotate from './TreapRotate'
 
 test('test rotate tereap ', () => {
   const tp = new TreapRotate()

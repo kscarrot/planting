@@ -1,21 +1,9 @@
 import { SearchTree } from '../ADT'
+import { TreeNode } from '../Node'
 import { Comparator, compareFunction } from '../../util'
 
-export class TreeNodeBisic<T> {
-  value: T
-  parent: TreeNodeBisic<T> | null = null
-  left: TreeNodeBisic<T> | null = null
-  right: TreeNodeBisic<T> | null = null
-  constructor(value: T, parent?: TreeNodeBisic<T>) {
-    this.value = value
-    if (parent != null) this.parent = parent
-  }
-}
-
-export type TreeNode<T> = TreeNodeBisic<T> | null
-
 class BinarySearchTree<T> implements SearchTree<T> {
-  private root: TreeNode<T> = null
+  private root: TreeNode<T> | null = null
   protected cmp: Comparator<T>
   size: number = 0
   constructor(cmpFn?: compareFunction<T>) {
@@ -26,45 +14,45 @@ class BinarySearchTree<T> implements SearchTree<T> {
     return this.size === 0
   }
 
-  private find(value: T, curRoot: TreeNode<T>): TreeNode<T> {
+  private find(value: T, curRoot: TreeNode<T> | null): TreeNode<T> | null {
     if (curRoot === null) return null
     if (curRoot.value === value) return curRoot
     const child = this.cmp.lt(value, curRoot.value) ? 'left' : 'right'
-    return curRoot[child] != null ? this.find(value, curRoot[child]) : null
+    return curRoot[child] ? this.find(value, curRoot[child]) : null
   }
 
-  private findMin(node: TreeNodeBisic<T>) {
+  private findMin(node: TreeNode<T>) {
     let minNode = node
-    while (minNode?.left != null) {
+    while (minNode?.left) {
       minNode = minNode.left
     }
     return minNode
   }
 
-  private replaceNodeInParent(curNode: TreeNode<T>, newNode: TreeNode<T>) {
+  private replaceNodeInParent(curNode: TreeNode<T> | null, newNode: TreeNode<T> | null) {
     const parent = curNode?.parent
-    if (parent != null) {
+    if (parent) {
       parent[curNode === parent.left ? 'left' : 'right'] = newNode
-      if (newNode != null) newNode.parent = parent
+      if (newNode) newNode.parent = parent
     } else {
       this.root = newNode
     }
   }
 
-  insert(value: T, parent?: TreeNode<T>) {
+  insert(value: T, parent?: TreeNode<T> | null) {
     if (parent == null) {
       if (this.root == null) {
-        this.root = new TreeNodeBisic(value)
+        this.root = new TreeNode(value)
         this.size++
         return this
       }
       parent = this.root
     }
     const child = this.cmp.lt(value, parent.value) ? 'left' : 'right'
-    if (parent[child] != null) {
+    if (parent[child]) {
       this.insert(value, parent[child])
     } else {
-      parent[child] = new TreeNodeBisic(value, parent)
+      parent[child] = new TreeNode(value, parent)
       this.size++
     }
     return this
@@ -74,7 +62,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
     const node = this.find(value, this.root)
     if (node == null) return null
     const temp = node.value
-    if (node.left != null && node.right != null) {
+    if (node.left && node.right) {
       const result = this.findMin(node.right)
       this.delete(result.value)
       node.value = result.value
@@ -87,7 +75,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
 
   search(value: T) {
     const node = this.find(value, this.root)
-    return node != null ? node.value : null
+    return node ? node.value : null
   }
 
   clear() {
@@ -96,8 +84,8 @@ class BinarySearchTree<T> implements SearchTree<T> {
   }
 
   *traverse() {
-    function* inorder(root: TreeNode<T>): Generator {
-      if (root != null) {
+    function* inorder(root: TreeNode<T> | null): Generator {
+      if (root) {
         yield* inorder(root.left)
         yield root.value
         yield* inorder(root.right)

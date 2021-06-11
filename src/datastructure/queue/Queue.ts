@@ -24,14 +24,14 @@ class Queue<T> implements QueueADT<T> {
   }
 
   dequeue() {
-    if (this.l.isEmpty()) {
+    if (this.l.isEmpty) {
       throw new Error('Queue is empty')
     }
     return this.l.delete(0)
   }
 
   front() {
-    if (this.l.head != null) {
+    if (this.l.head) {
       return this.l.head.value
     } else {
       throw new Error('Queue is empty')

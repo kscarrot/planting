@@ -13,7 +13,7 @@ const testInit = (l: NumberList) => {
   expect(l.length).toBe(1)
   expect(l.get(0)).toBe(1)
   l.delete(0)
-  expect(l.isEmpty()).toBe(true)
+  expect(l.isEmpty).toBe(true)
   expect(l.head).toBe(null)
   expect(l.tail).toBe(null)
 }
@@ -29,7 +29,7 @@ const testBoundary = (l: NumberList) => {
   l.delete(2)
   l.delete(0)
   l.delete(0)
-  expect(l.isEmpty()).toBe(true)
+  expect(l.isEmpty).toBe(true)
 }
 
 const testTraverse = (l: NumberList) => {

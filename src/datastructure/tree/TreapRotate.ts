@@ -1,68 +1,27 @@
 import { TreapADT } from '../ADT'
+import { TreapRotateNode } from '../Node'
 import { Comparator, compareFunction } from '../../util'
-
-type TreapRotateNode<T> = TreapRotateBasicNode<T> | null
 
 const inverse = (side: 'right' | 'left') => (side === 'right' ? 'left' : 'right')
 
-class TreapRotateBasicNode<T> {
-  value: T
-  left: TreapRotateNode<T>
-  right: TreapRotateNode<T>
-  size: number = 1
-  key: number
-  constructor(value: T, left?: TreapRotateNode<T>, right?: TreapRotateNode<T>) {
-    this.value = value
-    this.left = left ?? null
-    this.right = right ?? null
-    this.key = Math.random()
-  }
-
-  resize() {
-    this.size = (this.right != null ? this.right.size : 0) + (this.left != null ? this.left.size : 0) + 1
-    return this
-  }
-
-  /**
-   *
-   * @param side 旋转的方向
-   *       y                       x
-   *     /   \                   /   \
-   *    x     c      <=>        a      y
-   *  /   \                          /   \
-   * a     b                        b     c
-   */
-  rotate(side: 'right' | 'left') {
-    const temp = this[side]
-    const inverseSide = inverse(side)
-    if (temp != null) {
-      this[side] = temp[inverseSide]
-      temp[inverseSide] = this
-      this.resize()
-      temp.resize()
-    }
-    return temp
-  }
-}
-
 class TreapRotate<T> implements TreapADT<T> {
   protected cmp: Comparator<T>
-  root: TreapRotateNode<T> = null
+  root: TreapRotateNode<T> | null = null
   constructor(cmpFn?: compareFunction<T>) {
     this.cmp = new Comparator(cmpFn)
   }
 
   get size() {
-    return this.root != null ? this.root.size : 0
+    return this.root?.size ?? 0
   }
 
   isEmpty() {
     return this.size === 0
   }
 
-  private insertNode(node: TreapRotateNode<T>, value: T) {
+  private insertNode(node: TreapRotateNode<T> | null, value: T) {
     if (node === null) {
-      return new TreapRotateBasicNode(value)
+      return new TreapRotateNode(value)
     }
     const side = this.cmp.lt(value, node.value) ? 'left' : 'right'
     node[side] = this.insertNode(node[side], value)
@@ -74,14 +33,14 @@ class TreapRotate<T> implements TreapADT<T> {
     return node.resize()
   }
 
-  private findNode(node: TreapRotateNode<T>, value: T): TreapRotateNode<T> {
+  private findNode(node: TreapRotateNode<T> | null, value: T): TreapRotateNode<T> | null {
     if (node === null) return null
     if (node.value === value) return node
     const side = this.cmp.lt(value, node.value) ? 'left' : 'right'
     return this.findNode(node[side], value)
   }
 
-  private deleteNode(node: TreapRotateNode<T>, value: T) {
+  private deleteNode(node: TreapRotateNode<T> | null, value: T) {
     if (node === null) return null
 
     if (node.value === value) {
@@ -90,7 +49,7 @@ class TreapRotate<T> implements TreapADT<T> {
       }
       const side = node.left === null ? 'right' : 'left'
       const inverseSide = inverse(side)
-      node = node.rotate(side) as TreapRotateBasicNode<T>
+      node = node.rotate(side) as TreapRotateNode<T>
       node[inverseSide] = this.deleteNode(node[inverseSide], value)
       return node.resize()
     } else {
@@ -107,7 +66,7 @@ class TreapRotate<T> implements TreapADT<T> {
 
   find(value: T) {
     const result = this.findNode(this.root, value)
-    return result != null ? result.value : null
+    return result?.value ?? null
   }
 
   delete(value: T) {
@@ -122,15 +81,15 @@ class TreapRotate<T> implements TreapADT<T> {
 
   extract() {
     const value = this.peek()
-    if (value != null) {
+    if (value) {
       return this.delete(value)
     }
     return null
   }
 
   *traverse() {
-    function* inorder(root: TreapRotateNode<T>): Generator {
-      if (root != null) {
+    function* inorder(root: TreapRotateNode<T> | null): Generator {
+      if (root) {
         yield* inorder(root.left)
         yield root.value
         yield* inorder(root.right)

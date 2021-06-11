@@ -1,6 +1,6 @@
 export interface ListADT<T> {
   length: number
-  isEmpty: () => boolean
+  isEmpty: boolean
   get: (index: number) => T
   delete: (index: number) => T
   insert: (index: number, value: T) => void
@@ -8,7 +8,7 @@ export interface ListADT<T> {
 
 export interface StackADT<T> {
   length: number
-  isEmpty: () => boolean
+  isEmpty: boolean
   push: (value: T) => void
   pop: () => T
   peek: () => T
@@ -16,7 +16,7 @@ export interface StackADT<T> {
 
 export interface QueueADT<T> {
   length: number
-  isEmpty: () => boolean
+  isEmpty: boolean
   enqueue: (value: T) => void
   dequeue: () => T
   front: () => T
@@ -24,7 +24,7 @@ export interface QueueADT<T> {
 
 export interface DequeueADT<T> {
   length: number
-  isEmpty: () => boolean
+  isEmpty: boolean
   push: (value: T) => void
   pop: () => T
   unshift: (value: T) => void

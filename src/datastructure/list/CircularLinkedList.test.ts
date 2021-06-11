@@ -3,7 +3,7 @@ import { CircularLinkedList } from '../list'
 
 test('test CircularLinkedList normal index', () => {
   const l = new CircularLinkedList()
-  expect(l.isEmpty()).toBe(true)
+  expect(l.isEmpty).toBe(true)
   expect(() => l.get(1)).toThrow()
 
   l.add(1)

@@ -24,14 +24,14 @@ class Dequeue<T> implements DequeueADT<T> {
   }
 
   pop() {
-    if (this.l.tail != null) {
+    if (this.l.tail) {
       return this.l.deleteNode(this.l.tail)
     }
     throw new Error('Dequeue is empty')
   }
 
   shift() {
-    if (this.l.isEmpty()) {
+    if (this.l.isEmpty) {
       throw new Error('Dequeue is empty')
     }
     return this.l.delete(0)
@@ -42,7 +42,7 @@ class Dequeue<T> implements DequeueADT<T> {
   }
 
   front() {
-    if (this.l.head != null) {
+    if (this.l.head) {
       return this.l.head.value
     } else {
       throw new Error('Dequeue is empty')
@@ -50,7 +50,7 @@ class Dequeue<T> implements DequeueADT<T> {
   }
 
   end() {
-    if (this.l.tail != null) {
+    if (this.l.tail) {
       return this.l.tail.value
     } else {
       throw new Error('Dequeue is empty')

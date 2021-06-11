@@ -1,24 +1,15 @@
 import { ListADT } from '../ADT'
+import { CircularLinkedNode } from '../Node'
 
-class Node<T> {
-  value: T
-  prev: Node<T>
-  next: Node<T>
-  constructor(value: T) {
-    this.value = value
-    this.prev = this
-    this.next = this
-  }
-}
 class CircularLinkedList<T> implements ListADT<T> {
   length = 0
-  head: null | Node<T> = null
+  head: null | CircularLinkedNode<T> = null
 
-  isEmpty() {
+  get isEmpty() {
     return this.length === 0
   }
 
-  private isNodeNull(node: Node<T> | null): node is null {
+  private isNodeNull(node: CircularLinkedNode<T> | null): node is null {
     return node === null
   }
 
@@ -44,7 +35,7 @@ class CircularLinkedList<T> implements ListADT<T> {
   }
 
   add(value: T) {
-    const node = new Node(value)
+    const node = new CircularLinkedNode(value)
     if (this.isNodeNull(this.head)) {
       this.head = node
     } else {
@@ -58,7 +49,7 @@ class CircularLinkedList<T> implements ListADT<T> {
     return this
   }
 
-  private deleteNode(delNode: Node<T>) {
+  private deleteNode(delNode: CircularLinkedNode<T>) {
     if (this.length === 1) {
       this.head = null
     } else {
@@ -74,11 +65,11 @@ class CircularLinkedList<T> implements ListADT<T> {
   }
 
   insert(index: number, value: T) {
-    if (this.isEmpty()) {
+    if (this.isEmpty) {
       this.add(value)
       return this
     }
-    const node = new Node(value)
+    const node = new CircularLinkedNode(value)
     const nextNode = this.getNode(index)
     const prevNode = nextNode.prev
     prevNode.next = node
@@ -92,7 +83,7 @@ class CircularLinkedList<T> implements ListADT<T> {
   *traverse() {
     let current = this.head
     let index = 0
-    while (current != null && index < this.length) {
+    while (current && index < this.length) {
       yield current.value
       current = current.next
       index++

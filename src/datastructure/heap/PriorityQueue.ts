@@ -18,7 +18,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
     return this.heap.size
   }
 
-  isEmpty() {
+  get isEmpty() {
     return this.length === 0
   }
 
@@ -42,7 +42,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
 
   dequeue() {
     const top = this.heap.extract()
-    if (top != null) {
+    if (top) {
       this.priorityMap.delete(top)
     } else {
       throw new Error('queue is empty')
@@ -52,7 +52,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
 
   front() {
     const top = this.heap.peek()
-    if (top != null) {
+    if (top) {
       return top
     } else {
       throw new Error('queue is empty')

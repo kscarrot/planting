@@ -1,19 +1,12 @@
 import { ListADT } from '../ADT'
-
-class Node<T> {
-  value: T
-  next: Node<T> | null = null
-  constructor(value: T) {
-    this.value = value
-  }
-}
+import { SinglyLinkedNode } from '../Node'
 
 class LinkedList<T> implements ListADT<T> {
   length = 0
-  head: null | Node<T> = null
-  tail: null | Node<T> = null
+  head: null | SinglyLinkedNode<T> = null
+  tail: null | SinglyLinkedNode<T> = null
 
-  isEmpty() {
+  get isEmpty() {
     return this.length === 0
   }
 
@@ -26,7 +19,7 @@ class LinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = point.next as Node<T>
+      point = point.next as SinglyLinkedNode<T>
     }
     return point
   }
@@ -36,7 +29,7 @@ class LinkedList<T> implements ListADT<T> {
   }
 
   add(value: T) {
-    const node = new Node(value)
+    const node = new SinglyLinkedNode(value)
     if (this.tail === null) {
       this.head = node
       this.tail = node
@@ -68,7 +61,7 @@ class LinkedList<T> implements ListADT<T> {
   }
 
   insert(index: number, value: T) {
-    const node = new Node(value)
+    const node = new SinglyLinkedNode(value)
     if (index === this.length) {
       this.add(value)
       return this
@@ -86,7 +79,7 @@ class LinkedList<T> implements ListADT<T> {
 
   *traverse() {
     let current = this.head
-    while (current != null) {
+    while (current) {
       yield current.value
       current = current.next
     }

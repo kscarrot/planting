@@ -36,7 +36,7 @@ class HashTable<T> implements HashTableADT<T> {
 
   get(key: any) {
     const element = this.find(key)
-    return element != null ? element.value : null
+    return element !== null ? element.value : null
   }
 
   set(key: any, value: T) {
@@ -47,7 +47,7 @@ class HashTable<T> implements HashTableADT<T> {
     }
     const item = { key, value }
     const element = this.find(key)
-    if (element != null) {
+    if (element !== null) {
       element.value = value
     } else {
       this.table[i].add(item)
@@ -58,7 +58,7 @@ class HashTable<T> implements HashTableADT<T> {
   delete(key: any) {
     const i = this.position(key)
     const node = this.findNode(this.table[i], key)
-    if (node != null) {
+    if (node) {
       this.table[i].deleteNode(node)
       this.size--
       return true
@@ -72,9 +72,8 @@ class HashTable<T> implements HashTableADT<T> {
   }
 
   private findNode(list: List<Map<T>>, key: any) {
-    // eslint-disable-next-line
-    let node = list && list.head
-    while (node != null) {
+    let node = list?.head
+    while (node) {
       if (node.value.key === key) {
         return node
       }
@@ -84,7 +83,6 @@ class HashTable<T> implements HashTableADT<T> {
 
   private find(key: any) {
     const i = this.position(key)
-    // eslint-disable-next-line
     if (this.table[i]) {
       for (const map of this.table[i]) {
         if (map.key === key) {
