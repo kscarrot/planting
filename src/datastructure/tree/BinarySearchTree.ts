@@ -8,7 +8,7 @@ export class TreeNodeBisic<T> {
   right: TreeNodeBisic<T> | null = null
   constructor(value: T, parent?: TreeNodeBisic<T>) {
     this.value = value
-    if (parent != null) this.parent = parent
+    if (parent) this.parent = parent
   }
 }
 
@@ -30,12 +30,12 @@ class BinarySearchTree<T> implements SearchTree<T> {
     if (curRoot === null) return null
     if (curRoot.value === value) return curRoot
     const child = this.cmp.lt(value, curRoot.value) ? 'left' : 'right'
-    return curRoot[child] != null ? this.find(value, curRoot[child]) : null
+    return curRoot[child] ? this.find(value, curRoot[child]) : null
   }
 
   private findMin(node: TreeNodeBisic<T>) {
     let minNode = node
-    while (minNode?.left != null) {
+    while (minNode?.left) {
       minNode = minNode.left
     }
     return minNode
@@ -43,9 +43,9 @@ class BinarySearchTree<T> implements SearchTree<T> {
 
   private replaceNodeInParent(curNode: TreeNode<T>, newNode: TreeNode<T>) {
     const parent = curNode?.parent
-    if (parent != null) {
+    if (parent) {
       parent[curNode === parent.left ? 'left' : 'right'] = newNode
-      if (newNode != null) newNode.parent = parent
+      if (newNode) newNode.parent = parent
     } else {
       this.root = newNode
     }
@@ -61,7 +61,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
       parent = this.root
     }
     const child = this.cmp.lt(value, parent.value) ? 'left' : 'right'
-    if (parent[child] != null) {
+    if (parent[child]) {
       this.insert(value, parent[child])
     } else {
       parent[child] = new TreeNodeBisic(value, parent)
@@ -74,7 +74,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
     const node = this.find(value, this.root)
     if (node == null) return null
     const temp = node.value
-    if (node.left != null && node.right != null) {
+    if (node.left && node.right) {
       const result = this.findMin(node.right)
       this.delete(result.value)
       node.value = result.value
@@ -87,7 +87,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
 
   search(value: T) {
     const node = this.find(value, this.root)
-    return node != null ? node.value : null
+    return node ? node.value : null
   }
 
   clear() {
@@ -97,7 +97,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
 
   *traverse() {
     function* inorder(root: TreeNode<T>): Generator {
-      if (root != null) {
+      if (root) {
         yield* inorder(root.left)
         yield root.value
         yield* inorder(root.right)

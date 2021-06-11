@@ -24,7 +24,7 @@ class Stack<T> implements StackADT<T> {
   }
 
   pop() {
-    if (this.l.tail != null) {
+    if (this.l.tail) {
       return this.l.deleteNode(this.l.tail)
     } else {
       throw new Error('Stack is empty')
@@ -32,7 +32,7 @@ class Stack<T> implements StackADT<T> {
   }
 
   peek() {
-    if (this.l.tail != null) {
+    if (this.l.tail) {
       return this.l.tail.value
     } else {
       throw new Error('Stack is empty')

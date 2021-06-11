@@ -99,7 +99,7 @@ class MinHeap<T> implements HeapADT<T> {
   }
 
   heapify(array?: T[]) {
-    if (array != null) {
+    if (array) {
       this.heap = array
     }
     for (let i = this.size >> 1; i >= 0; i--) {

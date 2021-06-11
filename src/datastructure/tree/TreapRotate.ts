@@ -19,7 +19,7 @@ class TreapRotateBasicNode<T> {
   }
 
   resize() {
-    this.size = (this.right != null ? this.right.size : 0) + (this.left != null ? this.left.size : 0) + 1
+    this.size = (this.right?.size ?? 0) + (this.left?.size ?? 0) + 1
     return this
   }
 
@@ -35,7 +35,7 @@ class TreapRotateBasicNode<T> {
   rotate(side: 'right' | 'left') {
     const temp = this[side]
     const inverseSide = inverse(side)
-    if (temp != null) {
+    if (temp) {
       this[side] = temp[inverseSide]
       temp[inverseSide] = this
       this.resize()
@@ -53,7 +53,7 @@ class TreapRotate<T> implements TreapADT<T> {
   }
 
   get size() {
-    return this.root != null ? this.root.size : 0
+    return this.root?.size ?? 0
   }
 
   isEmpty() {
@@ -107,7 +107,7 @@ class TreapRotate<T> implements TreapADT<T> {
 
   find(value: T) {
     const result = this.findNode(this.root, value)
-    return result != null ? result.value : null
+    return result?.value ?? null
   }
 
   delete(value: T) {
@@ -122,7 +122,7 @@ class TreapRotate<T> implements TreapADT<T> {
 
   extract() {
     const value = this.peek()
-    if (value != null) {
+    if (value) {
       return this.delete(value)
     }
     return null
@@ -130,7 +130,7 @@ class TreapRotate<T> implements TreapADT<T> {
 
   *traverse() {
     function* inorder(root: TreapRotateNode<T>): Generator {
-      if (root != null) {
+      if (root) {
         yield* inorder(root.left)
         yield root.value
         yield* inorder(root.right)

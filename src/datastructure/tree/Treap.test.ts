@@ -1,4 +1,4 @@
-import { Treap } from './index'
+import Treap from './Treap'
 
 test('test treap', () => {
   const tp = new Treap()

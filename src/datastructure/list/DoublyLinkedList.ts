@@ -94,7 +94,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
 
   *traverse() {
     let current = this.head
-    while (current != null) {
+    while (current) {
       yield current.value
       current = current.next
     }

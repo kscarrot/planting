@@ -11,10 +11,10 @@ const bfs = (root: NumberTree) => {
   queue.push(root)
   while (queue.length !== 0) {
     const node = queue.shift()
-    if (node != null) {
+    if (node) {
       result.push(node.value)
-      if (node.left != null) queue.push(node.left)
-      if (node.right != null) queue.push(node.right)
+      if (node.left) queue.push(node.left)
+      if (node.right) queue.push(node.right)
     }
   }
   return result
@@ -29,10 +29,10 @@ const dfs = (root: NumberTree) => {
   stack.push(root)
   while (stack.length !== 0) {
     const node = stack.pop()
-    if (node != null) {
+    if (node) {
       result.push(node.value)
-      if (node.right != null) stack.push(node.right)
-      if (node.left != null) stack.push(node.left)
+      if (node.right) stack.push(node.right)
+      if (node.left) stack.push(node.left)
     }
   }
   return result
@@ -44,7 +44,7 @@ const dfs = (root: NumberTree) => {
 const dfsr = (root: NumberTree) => {
   const result: number[] = []
   const dfs = (node: NumberTree) => {
-    if (node != null) {
+    if (node) {
       result.push(node.value)
       dfs(node.left)
       dfs(node.right)

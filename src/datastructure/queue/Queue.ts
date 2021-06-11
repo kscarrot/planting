@@ -31,7 +31,7 @@ class Queue<T> implements QueueADT<T> {
   }
 
   front() {
-    if (this.l.head != null) {
+    if (this.l.head) {
       return this.l.head.value
     } else {
       throw new Error('Queue is empty')
