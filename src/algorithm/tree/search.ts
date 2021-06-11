@@ -1,6 +1,6 @@
-import { TreeNode } from 'datastructure/tree/BinarySearchTree'
+import { TreeNode } from '../../datastructure/Node'
 
-type NumberTree = TreeNode<number>
+type NumberTree = TreeNode<number> | null
 
 /**
  * @description 广度优先搜索

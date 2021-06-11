@@ -2,7 +2,7 @@ import { Stack } from '../stack'
 test('test Stack ', () => {
   const s = new Stack()
   expect(s.length).toBe(0)
-  expect(s.isEmpty()).toBe(true)
+  expect(s.isEmpty).toBe(true)
 
   s.push(1)
   expect(s.length).toBe(1)

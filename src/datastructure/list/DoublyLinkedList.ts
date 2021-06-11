@@ -1,20 +1,11 @@
 import { ListADT } from '../ADT'
-
-export class Node<T> {
-  value: T
-  prev: Node<T> | null = null // 作为head时为null
-  next: Node<T> | null = null // 作为tail时为null
-  constructor(value: T) {
-    this.value = value
-  }
-}
-
+import { DoublyLinkedNode } from '../Node'
 class DoublyLinkedList<T> implements ListADT<T> {
   length = 0
-  head: null | Node<T> = null
-  tail: null | Node<T> = null
+  head: null | DoublyLinkedNode<T> = null
+  tail: null | DoublyLinkedNode<T> = null
 
-  isEmpty() {
+  get isEmpty() {
     return this.length === 0
   }
 
@@ -27,7 +18,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     }
     let point = this.head
     for (let i = 0; i < index; i++) {
-      point = point.next as Node<T>
+      point = point.next as DoublyLinkedNode<T>
     }
     return point
   }
@@ -37,7 +28,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
   }
 
   add(value: T) {
-    const node = new Node(value)
+    const node = new DoublyLinkedNode(value)
     if (this.tail === null) {
       this.head = node
       this.tail = node
@@ -49,7 +40,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
     this.length++
   }
 
-  deleteNode(delNode: Node<T>) {
+  deleteNode(delNode: DoublyLinkedNode<T>) {
     if (delNode === this.tail) {
       this.tail = delNode.prev
     } else {
@@ -75,7 +66,7 @@ class DoublyLinkedList<T> implements ListADT<T> {
       this.add(value)
       return this
     }
-    const node = new Node(value)
+    const node = new DoublyLinkedNode(value)
     const nextNode = this.getNode(index)
     const prevNode = nextNode.prev
     if (prevNode === null) {

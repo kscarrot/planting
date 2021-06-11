@@ -3,7 +3,7 @@ import { Queue } from '.'
 test('test Queue ', () => {
   const q = new Queue()
   expect(q.length).toBe(0)
-  expect(q.isEmpty()).toBe(true)
+  expect(q.isEmpty).toBe(true)
   q.enqueue(1)
   expect(q.length).toBe(1)
   expect(q.dequeue()).toBe(1)

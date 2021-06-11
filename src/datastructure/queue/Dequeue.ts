@@ -31,7 +31,7 @@ class Dequeue<T> implements DequeueADT<T> {
   }
 
   shift() {
-    if (this.l.isEmpty()) {
+    if (this.l.isEmpty) {
       throw new Error('Dequeue is empty')
     }
     return this.l.delete(0)

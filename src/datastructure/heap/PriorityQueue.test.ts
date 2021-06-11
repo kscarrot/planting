@@ -2,7 +2,7 @@ import PriorityQueue from './PriorityQueue'
 
 test('test priorityqueue', () => {
   const pq = new PriorityQueue()
-  expect(pq.isEmpty()).toBe(true)
+  expect(pq.isEmpty).toBe(true)
   expect(() => pq.front()).toThrowError()
   expect(() => pq.dequeue()).toThrowError()
   pq.enqueue(1, 1)

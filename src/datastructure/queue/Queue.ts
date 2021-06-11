@@ -24,7 +24,7 @@ class Queue<T> implements QueueADT<T> {
   }
 
   dequeue() {
-    if (this.l.isEmpty()) {
+    if (this.l.isEmpty) {
       throw new Error('Queue is empty')
     }
     return this.l.delete(0)

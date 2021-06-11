@@ -72,8 +72,7 @@ class HashTable<T> implements HashTableADT<T> {
   }
 
   private findNode(list: List<Map<T>>, key: any) {
-    // eslint-disable-next-line
-    let node = list && list.head
+    let node = list?.head
     while (node) {
       if (node.value.key === key) {
         return node
@@ -84,7 +83,6 @@ class HashTable<T> implements HashTableADT<T> {
 
   private find(key: any) {
     const i = this.position(key)
-    // eslint-disable-next-line
     if (this.table[i]) {
       for (const map of this.table[i]) {
         if (map.key === key) {

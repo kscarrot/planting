@@ -18,7 +18,7 @@ class PriorityQueue<T> implements PriorityQueueADT<T> {
     return this.heap.size
   }
 
-  isEmpty() {
+  get isEmpty() {
     return this.length === 0
   }
 
