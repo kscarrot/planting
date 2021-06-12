@@ -15,7 +15,7 @@ class TreapRotate<T> implements TreapADT<T> {
     return this.root?.size ?? 0
   }
 
-  isEmpty() {
+  get isEmpty() {
     return this.size === 0
   }
 

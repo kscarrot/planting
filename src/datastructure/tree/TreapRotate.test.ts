@@ -28,13 +28,13 @@ test('test rotate tereap ', () => {
 
 test('test treap methods', () => {
   const tp = new TreapRotate()
-  expect(tp.isEmpty()).toBe(true)
+  expect(tp.isEmpty).toBe(true)
   expect(tp.extract()).toBe(null)
   expect(tp.peek()).toBe(null)
   tp.insert(1)
   expect(tp.peek()).toBe(1)
   tp.extract()
-  expect(tp.isEmpty()).toBe(true)
+  expect(tp.isEmpty).toBe(true)
 })
 
 test('test treap search', () => {

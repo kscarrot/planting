@@ -125,7 +125,7 @@ class MaxHeap<T> extends MinHeap<T> {
     this.cmp.reverse()
   }
 
-  [Symbol.iterator] = super.traverse
+  override [Symbol.iterator] = super.traverse
 }
 
 export { MinHeap, MaxHeap }

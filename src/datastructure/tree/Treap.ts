@@ -12,7 +12,7 @@ class Treap<T> implements TreapADT<T> {
     return this.root?.size ?? 0
   }
 
-  isEmpty() {
+  get isEmpty() {
     return this.size === 0
   }
 
@@ -85,11 +85,13 @@ class Treap<T> implements TreapADT<T> {
     const sp2 = this.split(sp1.second, 1)
     const result = sp2.first
     this.merge(sp1.first, this.merge(sp2.first, sp2.second))
-    return result?.value ?? null
+    return result
   }
 
   getKth(index: number) {
-    return this.getNodeKth(this.root, index)
+    const kthNode = this.getNodeKth(this.root, index)
+    if (kthNode === null) return null
+    return kthNode.value
   }
 
   insert(value: T) {
@@ -121,7 +123,7 @@ class Treap<T> implements TreapADT<T> {
     return this.deleteKth(this.getRank(this.root.value))
   }
 
-  getPre(value: T) {
+  getPrev(value: T) {
     return this.getKth(this.getRank(value) - 1)
   }
 
