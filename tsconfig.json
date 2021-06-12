@@ -8,6 +8,7 @@
     "outDir": "./build",
     "importHelpers": true,
     "moduleResolution": "node",
+    "noImplicitOverride": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
