@@ -1,26 +1,15 @@
 import { TreapADT } from '../ADT'
 import { TreapRotateNode } from '../Node'
-import { Comparator, compareFunction } from '../../util'
+import BinarySearchTree from './BinarySearchTree'
 
 const inverse = (side: 'right' | 'left') => (side === 'right' ? 'left' : 'right')
 
-class TreapRotate<T> implements TreapADT<T> {
-  protected cmp: Comparator<T>
-  root: TreapRotateNode<T> | null = null
-  constructor(cmpFn?: compareFunction<T>) {
-    this.cmp = new Comparator(cmpFn)
-  }
-
-  get size() {
-    return this.root?.size ?? 0
-  }
-
-  isEmpty() {
-    return this.size === 0
-  }
+class TreapRotate<T> extends BinarySearchTree<T> implements TreapADT<T> {
+  override root: TreapRotateNode<T> | null = null
 
   private insertNode(node: TreapRotateNode<T> | null, value: T) {
     if (node === null) {
+      this.size++
       return new TreapRotateNode(value)
     }
     const side = this.cmp.lt(value, node.value) ? 'left' : 'right'
@@ -44,7 +33,8 @@ class TreapRotate<T> implements TreapADT<T> {
     if (node === null) return null
 
     if (node.value === value) {
-      if (node.left === null && node.right === null) {
+      if (node.isLeaf) {
+        this.size--
         return null
       }
       const side = node.left === null ? 'right' : 'left'
@@ -59,7 +49,7 @@ class TreapRotate<T> implements TreapADT<T> {
     }
   }
 
-  insert(value: T) {
+  override insert(value: T) {
     this.root = this.insertNode(this.root, value)
     return this
   }
@@ -69,7 +59,7 @@ class TreapRotate<T> implements TreapADT<T> {
     return result?.value ?? null
   }
 
-  delete(value: T) {
+  override delete(value: T) {
     this.root = this.deleteNode(this.root, value)
     return value
   }
@@ -86,19 +76,6 @@ class TreapRotate<T> implements TreapADT<T> {
     }
     return null
   }
-
-  *traverse() {
-    function* inorder(root: TreapRotateNode<T> | null): Generator {
-      if (root) {
-        yield* inorder(root.left)
-        yield root.value
-        yield* inorder(root.right)
-      }
-    }
-    yield* inorder(this.root)
-  }
-
-  [Symbol.iterator] = this.traverse
 }
 
 export default TreapRotate

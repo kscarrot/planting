@@ -38,14 +38,12 @@ export interface HashTableADT<T> {
   get: (key: any) => T | null
   set: (key: any, value: T) => void
   delete: (key: string) => void
-  clear: () => void
 }
 export interface HashSetADT<T> {
   size: number
   add: (value: T) => void
   delete: (value: T) => boolean
   has: (value: T) => boolean
-  clear: () => void
 }
 
 export interface HeapADT<T> {
@@ -62,8 +60,15 @@ export interface PriorityQueueADT<T> extends QueueADT<T> {
 
 export interface SearchTree<T> {
   size: number
+  isEmpty: boolean
   insert: (value: T) => void
   delete: (value: T) => void
+  getRank: (value: T) => number
+  getKth: (index: number) => T | null
+  max: T | null
+  min: T | null
+  getPrev: (value: T) => T | null
+  getNext: (value: T) => T | null
 }
 
 export interface TreapADT<T> extends SearchTree<T>, HeapADT<T> {}

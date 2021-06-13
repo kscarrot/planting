@@ -15,7 +15,7 @@ export class SinglyLinkedNode<T> extends BaseNode<T> {
 
 export class DoublyLinkedNode<T> extends SinglyLinkedNode<T> {
   public prev: DoublyLinkedNode<T> | null
-  public next: DoublyLinkedNode<T> | null
+  public override next: DoublyLinkedNode<T> | null
   constructor(value: T) {
     super(value)
     this.next = null
@@ -24,8 +24,8 @@ export class DoublyLinkedNode<T> extends SinglyLinkedNode<T> {
 }
 
 export class CircularLinkedNode<T> extends DoublyLinkedNode<T> {
-  public prev: CircularLinkedNode<T>
-  public next: CircularLinkedNode<T>
+  public override prev: CircularLinkedNode<T>
+  public override next: CircularLinkedNode<T>
   constructor(value: T, prev?: CircularLinkedNode<T>, next?: CircularLinkedNode<T>) {
     super(value)
     this.prev = prev ?? this
@@ -42,11 +42,15 @@ export class TreeNode<T> {
     this.value = value
     if (parent) this.parent = parent
   }
+
+  get isLeaf() {
+    return this.right === null && this.left === null
+  }
 }
 
 export class TreapNode<T> extends TreeNode<T> {
-  left: TreapNode<T> | null = null
-  right: TreapNode<T> | null = null
+  override left: TreapNode<T> | null = null
+  override right: TreapNode<T> | null = null
   size: number = 1
   key: number
   constructor(value: T) {
@@ -63,15 +67,12 @@ export class TreapNode<T> extends TreeNode<T> {
 const inverse = (side: 'right' | 'left') => (side === 'right' ? 'left' : 'right')
 
 export class TreapRotateNode<T> extends TreapNode<T> {
-  left: TreapRotateNode<T> | null
-  right: TreapRotateNode<T> | null
-  size: number = 1
-  key: number
+  override left: TreapRotateNode<T> | null
+  override right: TreapRotateNode<T> | null
   constructor(value: T, left?: TreapRotateNode<T>, right?: TreapRotateNode<T>) {
     super(value)
     this.left = left ?? null
     this.right = right ?? null
-    this.key = Math.random()
   }
 
   /**
