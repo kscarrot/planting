@@ -1,7 +1,7 @@
 import Treap from './Treap'
 
 test('test treap', () => {
-  const tp = new Treap()
+  const tp = new Treap<number>()
   expect(tp.isEmpty).toBe(true)
   expect(tp.getKth(1)).toBeNull()
   expect(tp.deleteKth(1)).toBeNull()

@@ -134,7 +134,7 @@ class BinarySearchTree<T> implements SearchTree<T> {
   }
 
   getKth(index: number) {
-    const result = this.getKthNode(index, this.root)
+    const result = this.getKthNode(index - 1, this.root)
     if (result === null) {
       return null
     } else {
