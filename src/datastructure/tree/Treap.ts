@@ -1,22 +1,11 @@
 import { TreapADT } from '../ADT'
 import { TreapNode } from '../Node'
-import { Comparator, Pair, compareFunction } from '../../util'
-class Treap<T> implements TreapADT<T> {
-  protected cmp: Comparator<T>
-  root: TreapNode<T> | null = null
-  constructor(cmpFn?: compareFunction<T>) {
-    this.cmp = new Comparator(cmpFn)
-  }
+import { Pair } from '../../util'
+import BinarySearchTree from './BinarySearchTree'
+class Treap<T> extends BinarySearchTree<T> implements TreapADT<T> {
+  override root: TreapNode<T> | null = null
 
-  get size() {
-    return this.root?.size ?? 0
-  }
-
-  get isEmpty() {
-    return this.size === 0
-  }
-
-  private getNodeSize(treap: TreapNode<T> | null) {
+  protected override getNodeSize(treap: TreapNode<T> | null) {
     return treap?.size ?? 0
   }
 
@@ -68,17 +57,6 @@ class Treap<T> implements TreapADT<T> {
     return result
   }
 
-  getNodeRank(treap: TreapNode<T> | null, value: T): number {
-    if (treap == null) return 0
-    return this.cmp.lt(value, treap.value)
-      ? this.getNodeRank(treap.left, value)
-      : this.getNodeRank(treap.right, value) + this.getNodeSize(treap.left) + 1
-  }
-
-  getRank(value: T): number {
-    return this.getNodeRank(this.root, value)
-  }
-
   getNodeKth(treap: TreapNode<T> | null, k: number) {
     if (treap == null) return null
     const sp1 = this.split(treap, k - 1)
@@ -88,21 +66,22 @@ class Treap<T> implements TreapADT<T> {
     return result
   }
 
-  getKth(index: number) {
+  override getKth(index: number) {
     const kthNode = this.getNodeKth(this.root, index)
     if (kthNode === null) return null
     return kthNode.value
   }
 
-  insert(value: T) {
+  override insert(value: T) {
     const k = this.getRank(value)
     const sp = this.split(this.root, k)
     const node = new TreapNode(value)
     this.root = this.merge(this.merge(sp.first, node), sp.second)
+    this.size = this.root?.size ?? 0
     return this
   }
 
-  delete(value: T) {
+  override delete(value: T) {
     return this.deleteKth(this.getRank(value))
   }
 
@@ -110,6 +89,7 @@ class Treap<T> implements TreapADT<T> {
     const firstToKth = this.split(this.root, k - 1)
     const kthToLast = this.split(firstToKth.second, 1)
     this.root = this.merge(firstToKth.first, kthToLast.second)
+    this.size = this.root?.size ?? 0
     return kthToLast.first?.value ?? null
   }
 
@@ -122,38 +102,6 @@ class Treap<T> implements TreapADT<T> {
     if (this.root == null) return null
     return this.deleteKth(this.getRank(this.root.value))
   }
-
-  getPrev(value: T) {
-    return this.getKth(this.getRank(value) - 1)
-  }
-
-  getNext(value: T) {
-    return this.getKth(this.getRank(value) + 1)
-  }
-
-  /**
-   * anothor way to traverse
-   * ```
-  traverse() {
-    for (let i = 0; i < this.size; i++) {
-      yield this.getKth(i + 1)
-    }
-  }
-   * ```
-   */
-
-  *traverse() {
-    function* inorder(root: TreapNode<T> | null): Generator {
-      if (root) {
-        yield* inorder(root.left)
-        yield root.value
-        yield* inorder(root.right)
-      }
-    }
-    yield* inorder(this.root)
-  }
-
-  [Symbol.iterator] = this.traverse
 }
 
 export default Treap

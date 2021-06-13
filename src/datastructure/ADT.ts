@@ -63,6 +63,12 @@ export interface SearchTree<T> {
   isEmpty: boolean
   insert: (value: T) => void
   delete: (value: T) => void
+  getRank: (value: T) => number
+  getKth: (index: number) => T | null
+  max: T | null
+  min: T | null
+  getPrev: (value: T) => T | null
+  getNext: (value: T) => T | null
 }
 
 export interface TreapADT<T> extends SearchTree<T>, HeapADT<T> {}

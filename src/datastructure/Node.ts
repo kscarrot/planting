@@ -42,6 +42,10 @@ export class TreeNode<T> {
     this.value = value
     if (parent) this.parent = parent
   }
+
+  get isLeaf() {
+    return this.right === null && this.left === null
+  }
 }
 
 export class TreapNode<T> extends TreeNode<T> {
